@@ -1,3 +1,16 @@
+import spacy
+import json
+import re
+import warnings
+from numpy import argmin
+
+with open('meta/LabelsScheme.json') as json_file:
+    LabelsScheme = json.load(json_file)
+
+with open('meta/DefaultTags.json') as json_file:
+    DefaultTags = json.load(json_file)
+
+
 labels_scheme_link = 'https://github.com/maxschmaltz/DeInflector/blob/main/meta/LabelsScheme.json'
 
 def split_tags(tags: str) -> dict:
