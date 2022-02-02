@@ -57,6 +57,7 @@ class TagsProcessor:
             'NOUN': ['Gender'],
             'PRON': ['PronType', 'Poss'],
             'PROPN': ['Gender'],
+            'SCONJ': ['Prontype'],
             'X': ['Foreign']
         }
         curr_filter = self.filter.get(pos, [])
