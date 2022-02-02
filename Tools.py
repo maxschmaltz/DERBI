@@ -95,5 +95,5 @@ class TagsProcessor:
 
         # if the POS cannot have any forms and the features are not supported:
         # we cannot inflect that
-        raise ValueError('Features "' + target_morph + '" are not supported for the word "' + lemma + 
+        raise ValueError('Features "' + target_morph + '" are not supported for word "' + lemma + 
                          '" of POS "' + pos + '".\nLabels scheme is available at: ' + labels_scheme_link + '.')
