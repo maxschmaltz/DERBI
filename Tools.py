@@ -19,7 +19,7 @@ valid_features_link = 'https://github.com/maxschmaltz/DeInflector/blob/main/meta
 
 def split_tags(tags: str) -> dict:
     if tags == '':
-        return tags
+        return {}
     return {cat_feat.split('=')[0]: cat_feat.split('=')[1] for cat_feat in tags.split('|')}
 
 def merge_tags(tags: dict) -> str:
