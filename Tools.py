@@ -32,12 +32,12 @@ class TagsSearcher:
                                  '".\nValid features are available at ' + valid_features_link + '.')
     
     def primary_search(self, morph: str, pos: str) -> bool:
-        check_tags(split_tags(morph))
+        self.check_tags(split_tags(morph))
         return morph not in LabelsScheme.get(pos, [])
 
     def secondary_search(self, morph: str, pos: str) -> None or str:
         morph_tags = split_tags(morph)
-        check_tags(morph_tags)
+        self.check_tags(morph_tags)
         pattern = re.compile('(\\||^)' + '\\|(\\w+=\\w+\\|)*'.join([cat + '=' + feat 
                             for cat, feat in sorted(morph_tags.items())]) + '(\\||$)')
         matches = []
