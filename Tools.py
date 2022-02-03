@@ -27,7 +27,10 @@ class TagsSearcher:
 
     def check_tags(self, tags: dict):
         for cat, feat in tags.items():
-            if feat not in AvailableFeatures[cat]:
+            if ValidFeatures.get(cat) is None:
+                raise ValueError('Category "' + cat + '" is not supported.\nValid categories are available at ' 
+                                 + valid_features_link + '.')
+            if feat not in ValidFeatures[cat]:
                 raise ValueError('Feature "' + feat + '" is not valid for category "' + cat + 
                                  '".\nValid features are available at ' + valid_features_link + '.')
     
