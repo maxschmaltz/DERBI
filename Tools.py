@@ -18,6 +18,8 @@ labels_scheme_link = 'https://github.com/maxschmaltz/DeInflector/blob/main/meta/
 valid_features_link = 'https://github.com/maxschmaltz/DeInflector/blob/main/meta/ValidFeatures.json'
 
 def split_tags(tags: str) -> dict:
+    if tags == '':
+        return tags
     return {cat_feat.split('=')[0]: cat_feat.split('=')[1] for cat_feat in tags.split('|')}
 
 def merge_tags(tags: dict) -> str:
