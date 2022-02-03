@@ -30,26 +30,26 @@
     "Gender": 
 		[
 			"Fem",
-			"Masc"
-			"Neut",
+			"Masc",
+			"Neut"
 		],
     "Mood": 
 		[
 			"Imp",
 			"Ind",
-			"Sub"
-			"Sub1",
+			"Sub",
+			"Sub1"
 		],
     "Number": 
 		[
-        "Plur",
-        "Sing"
+			"Plur",
+			"Sing"
 		],
     "Person": 
 		[
-        "1",
-        "2",
-        "3"
+			"1",
+			"2",
+			"3"
 		],
     "Poss": 
 		[
@@ -57,12 +57,12 @@
 		],
     "Prontype": 
 		[
-        "Art",
-        "Dem",
-        "Ind",
-        "Int"
-        "Prs",
-        "Rel",
+			"Art",
+			"Dem",
+			"Ind",
+			"Int",
+			"Prs",
+			"Rel"
 		],
     "Reflex": 
 		[
@@ -70,18 +70,18 @@
 		],
     "Tense": 
 		[
-        "Fut1",
-        "Fut2"
-        "Past",
-        "Perf",
-        "Pqp",
-        "Pres",
+			"Fut1",
+			"Fut2"
+			"Past",
+			"Perf",
+			"Pqp",
+			"Pres",
 		],
     "Verbform": 
 		[
-        "Fin",
-        "Inf",
-        "Part"
+			"Fin",
+			"Inf",
+			"Part"
 		],
     "Voice": 
 		[
