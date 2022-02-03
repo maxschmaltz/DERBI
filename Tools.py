@@ -9,9 +9,13 @@ with open('meta/LabelsScheme.json') as json_file:
 
 with open('meta/DefaultTags.json') as json_file:
     DefaultTags = json.load(json_file)
+    
+with open('meta/ValidFeatures.json') as json_file:
+    ValidFeatures = json.load(json_file)
 
 
 labels_scheme_link = 'https://github.com/maxschmaltz/DeInflector/blob/main/meta/LabelsScheme.json'
+valid_features_link = 'https://github.com/maxschmaltz/DeInflector/blob/main/meta/ValidFeatures.json'
 
 def split_tags(tags: str) -> dict:
     return {cat_feat.split('=')[0]: cat_feat.split('=')[1] for cat_feat in tags.split('|')}
@@ -21,11 +25,19 @@ def merge_tags(tags: dict) -> str:
 
 class TagsSearcher:
 
+    def check_tags(self, tags: dict):
+        for cat, feat in tags.items():
+            if feat not in AvailableFeatures[cat]:
+                raise ValueError('Feature "' + feat + '" is not valid for category " + cat + 
+                                 '".\nValid features are available at ' + valid_features_link + '.')
+    
     def primary_search(self, morph: str, pos: str) -> bool:
+        check_tags(split_tags(morph))
         return morph not in LabelsScheme.get(pos, [])
 
     def secondary_search(self, morph: str, pos: str) -> None or str:
         morph_tags = split_tags(morph)
+        check_tags(morph_tags)
         pattern = re.compile('(\\||^)' + '\\|(\\w+=\\w+\\|)*'.join([cat + '=' + feat 
                             for cat, feat in sorted(morph_tags.items())]) + '(\\||$)')
         matches = []
