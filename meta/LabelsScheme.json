@@ -1,7 +1,6 @@
 {
 	"ADJ":
 		[
-			"",
 			"Degree=Cmp",
 			"Degree=Pos",
 			"Degree=Sup",
@@ -224,7 +223,6 @@
 		],
 	"ADP":
 		[
-			"",
 			"Case=Acc|Gender=Masc|Number=Sing",
 			"Case=Acc|Gender=Neut|Number=Sing",
 			"Case=Dat|Gender=Fem|Number=Sing",
@@ -233,7 +231,6 @@
 		],
 	"ADV":
 		[
-			"",
 			"Degree=Cmp",
 			"Degree=Pos",
 			"Degree=Sup",
@@ -849,7 +846,7 @@
 		],
 	"CCONJ":
 		[
-			""
+
 		],
 	"DET":
 		[
@@ -1057,7 +1054,7 @@
 		],
 	"INTJ":
 		[
-			""
+
 		],
 	"NOUN":
 		[
@@ -1088,11 +1085,11 @@
 		],
 	"NUM":
 		[
-			""
+
 		],
 	"PART":
 		[
-			""
+
 		],
 	"PRON":
 		[
@@ -1323,7 +1320,6 @@
 		],
 	"SCONJ": 
 		[
-			"",
 			"Prontype=Int"
 		],
 	"VERB":
@@ -1936,7 +1932,6 @@
 		],
 	"X": 
 		[
-			"",
 			"Foreign=Yes"
 		]
 }
