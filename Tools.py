@@ -1,8 +1,10 @@
-import spacy
 import json
 import re
+from collections import defaultdict
 import warnings
 from numpy import argmin
+import spacy
+
 
 with open('meta/LabelsScheme.json') as json_file:
     LabelsScheme = json.load(json_file)
@@ -24,6 +26,7 @@ def split_tags(tags: str) -> dict:
 
 def merge_tags(tags: dict) -> str:
     return '|'.join([cat + '=' + feat for cat, feat in tags.items()])
+
 
 class TagsSearcher:
 
@@ -59,6 +62,7 @@ class TagsSearcher:
                       res_tags + '". You can specify desired features if you wish.\nLabels scheme is available at: ' + labels_scheme_link + '.', Warning)
         return res_tags
 
+    
 class TagsProcessor:
 
     def __init__(self):
@@ -115,3 +119,35 @@ class TagsProcessor:
         # we cannot inflect that
         raise ValueError('Features "' + target_morph + '" are not supported for word "' + lemma + 
                          '" of POS "' + pos + '".\nLabels scheme is available at: ' + labels_scheme_link + '.')
+        
+        
+class LexcRules:
+
+    def __init__(self, lexicon_path):
+        with open(lexicon_path, 'r') as lexicon_file:
+            lexicon = [line for line in lexicon_file]
+        self.lexc = defaultdict(list)
+        self.exclude_pattern = re.compile('(?<=\[\^)(\w+,{0,1})+(?=\])')
+        self.multiple_pattern = re.compile('(?<=\[)(\w+,{0,1})+(?=\])')
+        for rule in lexicon:
+            self.interpret(rule)
+
+    def interpret(self, rule):
+        try: 
+            splitted = re.split('\+|->', rule)
+            input, feats, output = splitted[0], splitted[1], splitted[2]
+            splitted_feats = Tools.split_tags(feats)
+            rule_dict = {}
+            for cat, feat in splitted_feats.items():
+                if feat == '*':
+                    rule_dict[cat] = ValidFeatures[cat]
+                elif self.exclude_pattern.search(feat) is not None:
+                    to_exclude = self.exclude_pattern.search(feat)[0].split(',')
+                    rule_dict[cat] = [c for c in ValidFeatures[cat] if c not in to_exclude]
+                elif self.multiple_pattern.search(feat) is not None:
+                    multiple_choice = self.multiple_pattern.search(feat)[0].split(',')
+                    rule_dict[cat] = multiple_choice
+                else:
+                    rule_dict[cat] = [feat]
+            self.lexc[input].append({'rule': rule_dict, 'output': output.strip()})
+        except: pass
