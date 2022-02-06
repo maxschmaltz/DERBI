@@ -149,5 +149,5 @@ class Rules:
                     rule_dict[cat] = multiple_choice
                 else:
                     rule_dict[cat] = [feat]
-            self.lexc[input].append({'rule': rule_dict, 'output': re.sub(output.strip()})
+            self.lexc[input].append({'rule': rule_dict, 'output': output.strip()})
         except: pass
