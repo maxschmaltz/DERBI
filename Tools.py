@@ -121,15 +121,15 @@ class TagsProcessor:
                          '" of POS "' + pos + '".\nLabels scheme is available at: ' + labels_scheme_link + '.')
         
         
-class LexcRules:
+class Rules:
 
-    def __init__(self, lexicon_path):
-        with open(lexicon_path, 'r') as lexicon_file:
-            lexicon = [line for line in lexicon_file]
-        self.lexc = defaultdict(list)
+    def __init__(self, rules_path):
+        with open(rules_path, 'r') as rules_file:
+            rules = [line for line in rules_file]
+        self.rules = defaultdict(list)
         self.exclude_pattern = re.compile('(?<=\[\^)(\w+,{0,1})+(?=\])')
         self.multiple_pattern = re.compile('(?<=\[)(\w+,{0,1})+(?=\])')
-        for rule in lexicon:
+        for rule in rules:
             self.interpret(rule)
 
     def interpret(self, rule):
@@ -149,5 +149,5 @@ class LexcRules:
                     rule_dict[cat] = multiple_choice
                 else:
                     rule_dict[cat] = [feat]
-            self.lexc[input].append({'rule': rule_dict, 'output': output.strip()})
+            self.lexc[input].append({'rule': rule_dict, 'output': re.sub(output.strip()})
         except: pass
