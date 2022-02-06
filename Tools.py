@@ -121,7 +121,7 @@ class TagsProcessor:
                          '" of POS "' + pos + '".\nLabels scheme is available at: ' + labels_scheme_link + '.')
         
         
-class Rules:
+class LexcRules:
 
     def __init__(self, rules_path):
         with open(rules_path, 'r') as rules_file:
