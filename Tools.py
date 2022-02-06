@@ -172,12 +172,10 @@ class Automata:
             rule_dict = {}
             for cat, feat in splitted_feats.items():
                 if feat == '*':
-                    # rule_dict[cat] = ValidFeatures[cat]
-                    rule_dict[cat] = Tools.ValidFeatures[cat]
+                    rule_dict[cat] = ValidFeatures[cat]
                 elif self.exclude_pattern.search(feat) is not None:
                     to_exclude = self.exclude_pattern.search(feat)[0].split(',')
-                    # rule_dict[cat] = [c for c in ValidFeatures[cat] if c not in to_exclude]
-                    rule_dict[cat] = [c for c in Tools.ValidFeatures[cat] if c not in to_exclude]
+                    rule_dict[cat] = [c for c in ValidFeatures[cat] if c not in to_exclude]
                 elif self.multiple_pattern.search(feat) is not None:
                     multiple_choice = self.multiple_pattern.search(feat)[0].split(',')
                     rule_dict[cat] = multiple_choice
