@@ -136,7 +136,7 @@ class Rules:
         try: 
             splitted = re.split('\+|->', rule)
             input, feats, output = splitted[0], splitted[1], splitted[2]
-            splitted_feats = Tools.split_tags(feats)
+            splitted_feats = split_tags(feats)
             rule_dict = {}
             for cat, feat in splitted_feats.items():
                 if feat == '*':
