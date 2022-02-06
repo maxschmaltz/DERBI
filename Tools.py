@@ -151,3 +151,37 @@ class Rules:
                     rule_dict[cat] = [feat]
             self.rules[input].append({'rule': rule_dict, 'output': output.strip()})
         except: pass
+
+
+class Automata:
+
+    def __init__(self, rules_path):
+        with open(rules_path, 'r') as rules_file:
+            rules = [line for line in rules_file]
+        self.rules = []
+        self.exclude_pattern = re.compile('(?<=\[\^)(\w+,{0,1})+(?=\])')
+        self.multiple_pattern = re.compile('(?<=\[)(\w+,{0,1})+(?=\])')
+        for rule in rules:
+            self.interpret(rule)
+
+    def interpret(self, rule):
+        try: 
+            splitted = re.split('\+|->', rule)
+            pattern, feats, to_sub = splitted[0], splitted[1], splitted[2]
+            splitted_feats = split_tags(feats)
+            rule_dict = {}
+            for cat, feat in splitted_feats.items():
+                if feat == '*':
+                    # rule_dict[cat] = ValidFeatures[cat]
+                    rule_dict[cat] = Tools.ValidFeatures[cat]
+                elif self.exclude_pattern.search(feat) is not None:
+                    to_exclude = self.exclude_pattern.search(feat)[0].split(',')
+                    # rule_dict[cat] = [c for c in ValidFeatures[cat] if c not in to_exclude]
+                    rule_dict[cat] = [c for c in Tools.ValidFeatures[cat] if c not in to_exclude]
+                elif self.multiple_pattern.search(feat) is not None:
+                    multiple_choice = self.multiple_pattern.search(feat)[0].split(',')
+                    rule_dict[cat] = multiple_choice
+                else:
+                    rule_dict[cat] = [feat]
+            self.rules.append({'pattern': pattern, 'rule': rule_dict, 'to_sub': to_sub.replace('\n', '')})
+        except: pass  
