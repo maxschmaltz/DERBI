@@ -121,7 +121,7 @@ class TagsProcessor:
                          '" of POS "' + pos + '".\nLabels scheme is available at: ' + labels_scheme_link + '.')
         
         
-class Rules:
+class Lexicon:
 
     def __init__(self, rules_path):
         with open(rules_path, 'r') as rules_file:
@@ -153,7 +153,7 @@ class Rules:
         except: pass
 
 
-class Automata:
+class StateMachine:
 
     def __init__(self, rules_path):
         with open(rules_path, 'r') as rules_file:
