@@ -1,0 +1,24 @@
+	# Prothetical Vowels
+ 
+(?=[aeiouyäöüAEIOUYAÖÄÜ])+Degree=*->#
+ 
+e(?=$)+Degree=Cmp->
+
+e(?=[rl]$)+Degree=Cmp->e
+
+(?<=[dtsßz])$+Degree=Sup->e
+(?<=sch)$+-Degree=Sup>e
+
+	# Pos
+ 
+$+Degree=Pos->
+
+	# Cmp
+
+$+Degree=Cmp->er
+
+	# Sup
+
+^+Degree=Sup->am 
+
+$+Degree=Sup->sten
