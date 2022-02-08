@@ -8,7 +8,7 @@ e(?=$)+Degree=Cmp->
 e(?=[rl]$)+Degree=Cmp->
 
 (?<=[dtsßz])$+Degree=Sup->e
-(?<=sch)$+-Degree=Sup->e
+(?<=sch)$+Degree=Sup->e
 
 
 	# Pos
