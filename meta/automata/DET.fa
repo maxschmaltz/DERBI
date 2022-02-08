@@ -12,13 +12,13 @@ $+Case=[Dat,Gen]|Gender=Fem|Number=Sing|Prontype=[Dem, Ind, Ind]->er
 
 
 	# Declination of Prontype=Prs
-$+Case=Acc|Definite=Ind|Gender=Masc|Number=Sing|Prontype=Art->en
-$+Case=Dat|Definite=Def|Gender=*|Number=Plur|Prontype=Art->en
-$+Case=Dat|Definite=Ind|Gender=[Masc,Neut]|Number=Sing|Prontype=Art->em
-$+Case=Gen|Definite=Def|Gender=*|Number=Plur|Prontype=Art->er
-$+Case=Gen|Definite=Ind|Gender=[Masc,Neut]|Number=Sing|Prontype=Art->es
-$+Case=Nom|Definite=Ind|Gender=Masc|Number=Sing|Prontype=Art->
-$+Case=[Acc,Nom]|Definite=Def|Gender=*|Number=Plur|Prontype=Art->e
-$+Case=[Acc,Nom]|Definite=Ind|Gender=Fem|Number=Sing|Prontype=Art->e
-$+Case=[Acc,Nom]|Definite=Ind|Gender=Neut|Number=Sing|Prontype=Art->
-$+Case=[Dat,Gen]|Definite=Ind|Gender=Fem|Number=Sing|Prontype=Art->er
+$+Case=Acc|Definite=Ind|Gender=Masc|Number=Sing|Prontype=Prs->en
+$+Case=Dat|Definite=Def|Gender=*|Number=Plur|Prontype=Prs->en
+$+Case=Dat|Definite=Ind|Gender=[Masc,Neut]|Number=Sing|Prontype=Prs->em
+$+Case=Gen|Definite=Def|Gender=*|Number=Plur|Prontype=Prs->er
+$+Case=Gen|Definite=Ind|Gender=[Masc,Neut]|Number=Sing|Prontype=Prs->es
+$+Case=Nom|Definite=Ind|Gender=Masc|Number=Sing|Prontype=Prs->
+$+Case=[Acc,Nom]|Definite=Def|Gender=*|Number=Plur|Prontype=Prs->e
+$+Case=[Acc,Nom]|Definite=Ind|Gender=Fem|Number=Sing|Prontype=Prs->e
+$+Case=[Acc,Nom]|Definite=Ind|Gender=Neut|Number=Sing|Prontype=Prs->
+$+Case=[Dat,Gen]|Definite=Ind|Gender=Fem|Number=Sing|Prontype=Prs->er
