@@ -1,0 +1,24 @@
+	# Declination of Prontype=[Dem, Ind, Ind]
+$+Case=Acc|Gender=Masc|Number=Sing|Prontype=[Dem, Ind, Ind]->en
+$+Case=Dat|Gender=*|Number=Plur|Prontype=[Dem, Ind, Ind]->en
+$+Case=Dat|Gender=[Masc,Neut]|Number=Sing|Prontype=[Dem, Ind, Ind]->em
+$+Case=Gen|Gender=*|Number=Plur|Prontype=[Dem, Ind, Ind]->er
+$+Case=Gen|Gender=[Masc,Neut]|Number=Sing|Prontype=[Dem, Ind, Ind]->es
+$+Case=Nom|Gender=Masc|Number=Sing|Prontype=[Dem, Ind, Ind]->er
+$+Case=[Acc,Nom]|Gender=*|Number=Plur|Prontype=[Dem, Ind, Ind]->e
+$+Case=[Acc,Nom]|Gender=Fem|Number=Sing|Prontype=[Dem, Ind, Ind]->e
+$+Case=[Acc,Nom]|Gender=Neut|Number=Sing|Prontype=[Dem, Ind, Ind]->es
+$+Case=[Dat,Gen]|Gender=Fem|Number=Sing|Prontype=[Dem, Ind, Ind]->er
+
+
+	# Declination of Prontype=Prs
+$+Case=Acc|Definite=Ind|Gender=Masc|Number=Sing|Prontype=Art->en
+$+Case=Dat|Definite=Def|Gender=*|Number=Plur|Prontype=Art->en
+$+Case=Dat|Definite=Ind|Gender=[Masc,Neut]|Number=Sing|Prontype=Art->em
+$+Case=Gen|Definite=Def|Gender=*|Number=Plur|Prontype=Art->er
+$+Case=Gen|Definite=Ind|Gender=[Masc,Neut]|Number=Sing|Prontype=Art->es
+$+Case=Nom|Definite=Ind|Gender=Masc|Number=Sing|Prontype=Art->
+$+Case=[Acc,Nom]|Definite=Def|Gender=*|Number=Plur|Prontype=Art->e
+$+Case=[Acc,Nom]|Definite=Ind|Gender=Fem|Number=Sing|Prontype=Art->e
+$+Case=[Acc,Nom]|Definite=Ind|Gender=Neut|Number=Sing|Prontype=Art->
+$+Case=[Dat,Gen]|Definite=Ind|Gender=Fem|Number=Sing|Prontype=Art->er
