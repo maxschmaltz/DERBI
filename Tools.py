@@ -8,9 +8,6 @@ import spacy
 
 with open('meta/LabelsScheme.json') as json_file:
     LabelsScheme = json.load(json_file)
-
-with open('meta/DefaultTags.json') as json_file:
-    DefaultTags = json.load(json_file)
     
 with open('meta/ValidFeatures.json') as json_file:
     ValidFeatures = json.load(json_file)
@@ -56,7 +53,7 @@ class TagsSearcher:
             return
 
         extract_min = lambda m: m[argmin([len(f.split('|')) for f in m])]
-        res_tags = merge_tags({cat: (DefaultTags[cat] if morph_tags.get(cat) is None 
+        res_tags = merge_tags({cat: (ValidFeatures[cat][0] if morph_tags.get(cat) is None 
                                      else morph_tags[cat]) for cat, feat in split_tags(extract_min(matches)).items()})
         warnings.warn('Provided tags were not found in labels scheme. Some features were set as default.\nResult features are "' +
                       res_tags + '". You can specify desired features if you wish.\nLabels scheme is available at: ' + labels_scheme_link + '.', Warning)
