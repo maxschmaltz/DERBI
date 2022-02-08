@@ -20,15 +20,15 @@ $+Degree=Cmp->er
 $+Degree=Sup->st
 
 	# Declination
-$+Case=Nom|Declination=[Mixed,Strong]|Gender=Masc|Number=Sing->er!
-$+Case=[Acc,Nom]|Declination=[Mixed,Strong]|Gender=Neut|Number=Sing->es!
-$+Case=Nom|Declination=Weak|Gender=[Masc,Neut]|Number=Sing->e!
-$+Case=[Acc,Nom]|Declination=*|Gender=Fem|Number=Sing->e!
-$+Case=Dat|Declination=Strong|Gender=[Masc,Neut]|Number=Sing->em!
-$+Case=[Dat,Gen]|Declination=Strong|Gender=Fem|Number=Sing->er!
 $+Case=Acc|Declination=Weak|Gender=Neut|Number=Sing->e!
+$+Case=Dat|Declination=Strong|Gender=[Masc,Neut]|Number=Sing->em!
 $+Case=Gen|Declination=Strong|Gender=*|Number=Plur->er!
+$+Case=Nom|Declination=Weak|Gender=[Masc,Neut]|Number=Sing->e!
+$+Case=Nom|Declination=[Mixed,Strong]|Gender=Masc|Number=Sing->er!
+$+Case=[Acc,Nom]|Declination=*|Gender=Fem|Number=Sing->e!
 $+Case=[Acc,Nom]|Declination=Strong|Gender=*|Number=Plur->e!
+$+Case=[Acc,Nom]|Declination=[Mixed,Strong]|Gender=Neut|Number=Sing->es!
+$+Case=[Dat,Gen]|Declination=Strong|Gender=Fem|Number=Sing->er!
 
 (?<!!)$+Case=*|Declination=*|Gender=*|Number=*->en
 
