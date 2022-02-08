@@ -1,6 +1,6 @@
 	# Prothetical Vowels
  
-(?=[aeiouyäöüAEIOUYAÖÄÜ])+Degree=*->#
+(?=[aeiouyäöüAEIOUYAÖÄÜ])+Degree=[^Pos]->#
  
 e(?=$)+Degree=Cmp->
 
