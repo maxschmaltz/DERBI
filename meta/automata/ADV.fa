@@ -5,7 +5,7 @@
 	# Prothetical Vowels
 e(?=$)+Degree=Cmp->
 
-e(?=[rl]$)+Degree=Cmp->e
+e(?=[rl]$)+Degree=Cmp->
 
 (?<=[dtsßz])$+Degree=Sup->e
 (?<=sch)$+-Degree=Sup>e
