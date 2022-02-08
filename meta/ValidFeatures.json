@@ -1,15 +1,15 @@
 {
     "Case": 
 		[
+			"Nom",
 			"Acc",
 			"Dat",
-			"Gen",
-			"Nom"
+			"Gen"
 		],
     "Declination": 
 		[
-			"Mixed",
 			"Strong",
+			"Mixed",
 			"Weak"
 		],
     "Definite": 
@@ -19,8 +19,8 @@
 		],
     "Degree": 
 		[
-			"Cmp",
 			"Pos",
+			"Cmp",
 			"Sup"
 		],
     "Foreign": 
@@ -29,27 +29,27 @@
 		],
     "Gender": 
 		[
-			"Fem",
 			"Masc",
+			"Fem",
 			"Neut"
 		],
     "Mood": 
 		[
-			"Imp",
 			"Ind",
+			"Imp",
 			"Sub",
 			"Sub1"
 		],
     "Number": 
 		[
-			"Plur",
-			"Sing"
+			"Sing",
+			"Plur"
 		],
     "Person": 
 		[
+			"3",
 			"1",
-			"2",
-			"3"
+			"2"
 		],
     "Poss": 
 		[
@@ -70,12 +70,12 @@
 		],
     "Tense": 
 		[
+			"Pres",
 			"Fut1",
 			"Fut2",
 			"Past",
 			"Perf",
-			"Pqp",
-			"Pres"
+			"Pqp"
 		],
     "Verbform": 
 		[
