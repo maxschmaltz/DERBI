@@ -1,7 +1,8 @@
-	# Prothetical Vowels
- 
+ 	# Markers
 (?=[aeiouyäöüAEIOUYAÖÄÜ])+Degree=[^Pos]->#
  
+ 
+	# Prothetical Vowels
 e(?=$)+Degree=Cmp->
 
 e(?=[rl]$)+Degree=Cmp->e
@@ -9,16 +10,16 @@ e(?=[rl]$)+Degree=Cmp->e
 (?<=[dtsßz])$+Degree=Sup->e
 (?<=sch)$+-Degree=Sup>e
 
+
 	# Pos
- 
 $+Degree=Pos->
 
-	# Cmp
 
+	# Cmp
 $+Degree=Cmp->er
 
-	# Sup
 
+	# Sup
 ^+Degree=Sup->am 
 
 $+Degree=Sup->sten
