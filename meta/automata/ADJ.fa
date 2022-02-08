@@ -8,7 +8,7 @@ e(?=[rl]$)+Degree=Pos->E
 e(?=[rl]$)+Degree=Cmp->
 
 (?<=[dtsßz])$+Degree=Sup->e
-(?<=sch)$+-Degree=Sup>e
+(?<=sch)$+Degree=Sup->e
 
 	# Pos
 $+Degree=Pos->
@@ -30,10 +30,14 @@ $+Case=Acc|Declination=Weak|Gender=Neut|Number=Sing->e!
 $+Case=Gen|Declination=Strong|Gender=*|Number=Plur->er!
 $+Case=[Acc,Nom]|Declination=Strong|Gender=*|Number=Plur->e!
 
-(?<!!)$+Case=*|Declination=*|Degree=*|Gender=*|Number=*->en
+(?<!!)$+Case=*|Declination=*|Gender=*|Number=*->en
+
+
+	# Restore Prothetical Vowels
+E+Case=*|Declination=*|Degree=*|Gender=*|Number=*->
+E+->e
 
 	# Restore Markers
-
 %+Case=*|Declination=*|Degree=[^Sup]|Gender=*|Number=*->
 %(?=$)+->e
 
