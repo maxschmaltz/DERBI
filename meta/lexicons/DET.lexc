@@ -18,6 +18,13 @@ ein+Case=Nom|Definite=Ind|Gender=Masc|Number=Sing|Prontype=Art->ein
 ein+Case=[Acc,Nom]|Definite=Ind|Gender=Fem|Number=Sing|Prontype=Art->eine
 ein+Case=[Acc,Nom]|Definite=Ind|Gender=Neut|Number=Sing|Prontype=Art->ein
 ein+Case=[Dat,Gen]|Definite=Ind|Gender=Fem|Number=Sing|Prontype=Art->einer
+einen+Case=Acc|Definite=Ind|Gender=Masc|Number=Sing|Prontype=Art->einen
+einen+Case=Dat|Definite=Ind|Gender=[Masc,Neut]|Number=Sing|Prontype=Art->einem
+einen+Case=Gen|Definite=Ind|Gender=[Masc,Neut]|Number=Sing|Prontype=Art->eines
+einen+Case=Nom|Definite=Ind|Gender=Masc|Number=Sing|Prontype=Art->ein
+einen+Case=[Acc,Nom]|Definite=Ind|Gender=Fem|Number=Sing|Prontype=Art->eine
+einen+Case=[Acc,Nom]|Definite=Ind|Gender=Neut|Number=Sing|Prontype=Art->ein
+einen+Case=[Dat,Gen]|Definite=Ind|Gender=Fem|Number=Sing|Prontype=Art->einer
 kein+Case=Acc|Gender=Masc|Number=Sing|Prontype=Ind->keinen
 kein+Case=Dat|Gender=*|Number=Plur|Prontype=Ind->keinen
 kein+Case=Dat|Gender=[Masc,Neut]|Number=Sing|Prontype=Ind->keinem
