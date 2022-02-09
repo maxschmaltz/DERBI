@@ -1,14 +1,14 @@
-	# Declination of Prontype=[Dem, Ind, Int]
-$+Case=Acc|Gender=Masc|Number=Sing|Prontype=[Dem, Ind, Int]->en
-$+Case=Dat|Gender=*|Number=Plur|Prontype=[Dem, Ind, Int]->en
-$+Case=Dat|Gender=[Masc,Neut]|Number=Sing|Prontype=[Dem, Ind, Int]->em
-$+Case=Gen|Gender=*|Number=Plur|Prontype=[Dem, Ind, Int]->er
-$+Case=Gen|Gender=[Masc,Neut]|Number=Sing|Prontype=[Dem, Ind, Int]->es
-$+Case=Nom|Gender=Masc|Number=Sing|Prontype=[Dem, Ind, Int]->er
-$+Case=[Acc,Nom]|Gender=*|Number=Plur|Prontype=[Dem, Ind, Int]->e
-$+Case=[Acc,Nom]|Gender=Fem|Number=Sing|Prontype=[Dem, Ind, Int]->e
-$+Case=[Acc,Nom]|Gender=Neut|Number=Sing|Prontype=[Dem, Ind, Int]->es
-$+Case=[Dat,Gen]|Gender=Fem|Number=Sing|Prontype=[Dem, Ind, Int]->er
+	# Declination of Prontype=[Dem, Ind, Int, Rel]
+$+Case=Acc|Gender=Masc|Number=Sing|Prontype=[Dem,Ind,Int,Rel]->en
+$+Case=Dat|Gender=*|Number=Plur|Prontype=[Dem,Ind,Int,Rel]->en
+$+Case=Dat|Gender=[Masc,Neut]|Number=Sing|Prontype=[Dem,Ind,Int,Rel]->em
+$+Case=Gen|Gender=*|Number=Plur|Prontype=[Dem,Ind,Int,Rel]->er
+$+Case=Gen|Gender=[Masc,Neut]|Number=Sing|Prontype=[Dem,Ind,Int,Rel]->es
+$+Case=Nom|Gender=Masc|Number=Sing|Prontype=[Dem,Ind,Int,Rel]->er
+$+Case=[Acc,Nom]|Gender=*|Number=Plur|Prontype=[Dem,Ind,Int,Rel]->e
+$+Case=[Acc,Nom]|Gender=Fem|Number=Sing|Prontype=[Dem,Ind,Int,Rel]->e
+$+Case=[Acc,Nom]|Gender=Neut|Number=Sing|Prontype=[Dem,Ind,Int,Rel]->es
+$+Case=[Dat,Gen]|Gender=Fem|Number=Sing|Prontype=[Dem,Ind,Int,Rel]->er
 
 
 	# Declination of Prontype=Prs
