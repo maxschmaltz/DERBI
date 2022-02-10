@@ -1,10 +1,7 @@
 der+Case=Acc|Definite=Def|Gender=Masc|Number=Sing|Prontype=Art->den
 der+Case=Dat|Definite=Def|Gender=*|Number=Plur|Prontype=Art->den
 der+Case=Dat|Definite=Def|Gender=[Masc,Neut]|Number=Sing|Prontype=Art->dem
-der+Case=Gen|Definite=Def|Gender=*|Number=Plur|PronType=Art->deren
 der+Case=Gen|Definite=Def|Gender=*|Number=Plur|Prontype=Art->der
-der+Case=Gen|Definite=Def|Gender=Fem|Number=Sing|PronType=Art->deren
-der+Case=Gen|Definite=Def|Gender=[Masc,Neut]|Number=Sing|PronType=Art->dessen
 der+Case=Gen|Definite=Def|Gender=[Masc,Neut]|Number=Sing|Prontype=Art->des
 der+Case=Gen|Gender=*|Number=Plur|PronType=Rel->deren
 der+Case=Gen|Gender=Fem|Number=Sing|PronType=Rel->deren
