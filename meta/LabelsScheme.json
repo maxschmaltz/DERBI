@@ -849,7 +849,7 @@
 			"Case=Nom|Number=Plur|Prontype=Rel",
 			"Case=Nom|Number=Sing|Person=1|Prontype=Prs",
 			"Case=Nom|Number=Sing|Person=2|Prontype=Prs",
-			"Case=Nom|Number=Sing|Prontype=Rel
+			"Case=Nom|Number=Sing|Prontype=Rel"
 		],
 	"PROPN":
 		[
