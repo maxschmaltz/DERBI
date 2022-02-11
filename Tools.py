@@ -78,6 +78,10 @@ class TagsProcessor:
             'SCONJ': ['Prontype'],
             'X': ['Foreign']
         }
+        # let NOUNs with adjective declination pass           
+        if (pos == 'NOUN') and (tagset.get('Declination') is not None):
+            return
+        
         curr_filter = self.filter.get(pos, [])
         for key in tagset.keys():
             if key in curr_filter:
