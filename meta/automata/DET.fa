@@ -1,4 +1,5 @@
 	# Declination of Prontype=[Dem, Ind, Int, Rel]
+	
 $+Case=Acc|Gender=Masc|Number=Sing|Prontype=[Dem,Ind,Int,Rel]->en
 $+Case=Dat|Gender=*|Number=Plur|Prontype=[Dem,Ind,Int,Rel]->en
 $+Case=Dat|Gender=[Masc,Neut]|Number=Sing|Prontype=[Dem,Ind,Int,Rel]->em
@@ -12,6 +13,7 @@ $+Case=[Dat,Gen]|Gender=Fem|Number=Sing|Prontype=[Dem,Ind,Int,Rel]->er
 
 
 	# Declination of Prontype=Prs
+	
 $+Case=Acc|Gender=Masc|Number=Sing|Poss=Yes|Prontype=Prs->en
 $+Case=Dat|Gender=*|Number=Plur|Poss=Yes|Prontype=Prs->en
 $+Case=Dat|Gender=[Masc,Neut]|Number=Sing|Poss=Yes|Prontype=Prs->em
