@@ -1,8 +1,10 @@
  	# Markers
+	
 (?=[aeiouyäöüAEIOUYAÖÄÜ])+Degree=[^Pos]->#
  
  
 	# Prothetical Vowels
+	
 e(?=$)+Degree=Cmp->
 
 e(?=[rl]$)+Degree=Cmp->
@@ -10,16 +12,20 @@ e(?=[rl]$)+Degree=Cmp->
 (?<=[dtsßz])$+Degree=Sup->e
 (?<=sch)$+Degree=Sup->e
 
+	# Regular Model
 
-	# Pos
+		# Pos
+	
 $+Degree=Pos->
 
 
-	# Cmp
+		# Cmp
+	
 $+Degree=Cmp->er
 
 
-	# Sup
+		# Sup
+	
 ^+Degree=Sup->am 
 
 $+Degree=Sup->sten
