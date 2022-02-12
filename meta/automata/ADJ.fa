@@ -1,7 +1,9 @@
 	# Markers
+	
 (?=[aeiouyäöüAEIOUYAÖÄÜ])+Degree=[^Pos]->#
  
 	# Prothetical Vowels
+	
 e(?=$)+Degree=[^Sup]->%
 
 e(?=[rl]$)+Degree=Pos->E
@@ -10,16 +12,21 @@ e(?=[rl]$)+Degree=Cmp->
 (?<=[dtsßz])$+Degree=Sup->e
 (?<=sch)$+Degree=Sup->e
 
-	# Pos
+	# Regular Model
+		# Pos
+		
 $+Degree=Pos->
 
-	# Cmp
+		# Cmp
+	
 $+Degree=Cmp->er
 
-	# Sup
+		# Sup
+		
 $+Degree=Sup->st
 
-	# Declination
+		# Declination
+	
 $+Case=Acc|Declination=Weak|Gender=Neut|Number=Sing->e!
 $+Case=Dat|Declination=Strong|Gender=[Masc,Neut]|Number=Sing->em!
 $+Case=Gen|Declination=Strong|Gender=*|Number=Plur->er!
@@ -32,12 +39,13 @@ $+Case=[Dat,Gen]|Declination=Strong|Gender=Fem|Number=Sing->er!
 
 (?<!!)$+Case=*|Declination=*|Gender=*|Number=*->en
 
-
 	# Restore Prothetical Vowels
+	
 E+Case=*|Declination=*|Degree=*|Gender=*|Number=*->
 E+->e
 
 	# Restore Markers
+	
 %+Case=*|Declination=*|Degree=[^Sup]|Gender=*|Number=*->
 %(?=$)+->e
 
