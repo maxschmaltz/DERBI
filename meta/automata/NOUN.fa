@@ -1,0 +1,86 @@
+		# Decline Some Productive Inflection Models:
+		
+			# Weak Masculina Declination
+
+(?<=[ae]nt)$+Gender=Masc->_WEAK_
+(?<=[ai]t)$+Gender=Masc->_WEAK_
+(?<=graph)$+Gender=Masc->_WEAK_
+(?<=ist)$+Gender=Masc->_WEAK_
+(?<=nom)$+Gender=Masc->_WEAK_
+(?<=og)$+Gender=Masc->_WEAK_
+(?<=oge)$+Gender=Masc->_WEAK_
+(?<=soph)$+Gender=Masc->_WEAK_
+
+_WEAK_+Case=Nom|Number=Sing->%
+_WEAK_+->en%
+
+			# Null Plur Marker
+
+(?<=(?<!i)e[lnr])$+Gender=Masc->_NULL_PLUR_
+(?<=(?<!i)er)$+Gender=Masc->_NULL_PLUR_
+(?<=chen)$+Gender=Neut->_NULL_PLUR_
+(?<=le)$+Gender=Neut->_NULL_PLUR_
+(?<=lein)$+Gender=Neut->_NULL_PLUR_
+(?<=meter)$+Gender=Neut->_NULL_PLUR_
+
+_NULL_PLUR_+Case=Gen|Number=Sing->s%
+(?<!n)_NULL_PLUR_+Case=Dat|Number=Plur->n%
+_NULL_PLUR_+->% 
+
+			# Other Fem
+			
+in$+Case=*|Gender=Fem|Number=Plur->innen%
+
+			# Other Masc
+			
+ismus$+Case=*|Gender=Masc|Number=Plur->ismen%
+ismus$+Case=*|Gender=Masc|Number=Plur->ismus%
+
+or$+Case=*|Gender=Masc|Number=Plur->oren%
+
+			# Other Neut
+			
+a$+Case=*|Gender=Neut|Number=Plur->en%
+			
+sal$+Case=Dat|Gender=Neut|Number=Plur->salen%
+sal$+Case=Gen|Gender=Neut|Number=Sing->sals%
+sal$+Case=[^Dat]|Gender=Neut|Number=Plur->sale%
+sal$+Case=[^Gen]|Gender=Neut|Number=Sing->sal%
+
+um$+Case=*|Gender=Neut|Number=Plur->en%
+
+us$+Case=*|Gender=Neut|Number=Plur->en%
+us$+Case=*|Gender=Neut|Number=Plur->us%
+
+
+		# Regular model
+
+			# Markers
+			
+(?<=(s|ß)(?!%))$+Gender=[Masc,Neut]->E
+
+			# Fem
+
+(?<!%)$+Case=*|Gender=Fem|Number=Sing->
+(?<![e%])$+Case=*|Gender=Fem|Number=Plur->en
+(?<=e)$+Case=*|Gender=Fem|Number=Plur->n
+
+			# Masc, Neut
+
+(?<!%)$+Case=Gen|Gender=[Masc,Neut]|Number=Sing->s
+(?<!%)$+Case=[^Gen]|Gender=[Masc,Neut]|Number=Sing->
+(?<![e%])$+Case=*|Gender=Masc|Number=Plur->e
+(?<![e%])$+Case=*|Gender=Neut|Number=Plur->er
+(?<=e)$+Case=*|Gender=Masc|Number=Plur->n
+(?<=e)$+Case=*|Gender=Neut|Number=Plur->r
+
+			# Dat Plur: Obligatory -n
+
+(?<!n)$+Case=Dat|Number=Plur->n
+
+			# Restore Markers
+
+E+Case=Gen|Number=Sing->e
+E+->
+
+%+->
