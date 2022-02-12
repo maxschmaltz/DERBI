@@ -1,3 +1,5 @@
+    # Regular model
+
 $+Case=*|Gender=Fem|Number=Sing->
 $+Case=Gen|Gender=[Masc,Neut]|Number=Sing->s
 $+Case=[^Gen]|Gender=[Masc,Neut]|Number=Sing->
