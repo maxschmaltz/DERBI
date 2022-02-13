@@ -71,21 +71,12 @@
     "Tense": 
 		[
 			"Pres",
-			"Fut1",
-			"Fut2",
-			"Past",
-			"Perf",
-			"Pqp"
+			"Past"
 		],
     "Verbform": 
 		[
 			"Fin",
 			"Inf",
 			"Part"
-		],
-    "Voice": 
-		[
-			"Act",
-			"Pass"
 		]
 }
