@@ -1,5 +1,9 @@
     # Regular Model
 
 $+Case=*|Gender=Fem|Number=Sing->
+
+(?<=[sxßz])$+Case=Gen|Gender=[Masc,Neut]|Number=Sing->e
+(?<=sch)$+Case=Gen|Gender=[Masc,Neut]|Number=Sing->e
 $+Case=Gen|Gender=[Masc,Neut]|Number=Sing->s
+
 $+Case=[^Gen]|Gender=[Masc,Neut]|Number=Sing->
