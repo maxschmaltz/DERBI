@@ -1,5 +1,5 @@
 # import spacy
-# import Tools
+import Tools
 import re
 
 # Basic Parent Class
