@@ -100,6 +100,13 @@ class TagsProcessor:
         # check if anything changed
         if target_morph == str(morph):
             return str(morph)
+        
+        # replace some features for AUXs and VERBs
+        if (tok.pos_ in ['AUX', 'VERB']) and ('Verbform=Part' in target_morph):
+            target_morph = re.sub('Mood=\w+\|', '', target_morph)
+            
+        if ('Verbform=' not in target_morph) and (morph.get('VerbForm') == 'Inf'):
+            target_morph = re.sub('VerbForm=Inf', '', target_morph)
 
         # check if the features are supported
         search_failed = self.Searcher.primary_search(target_morph, pos)
