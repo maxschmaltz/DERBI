@@ -116,8 +116,7 @@ class AUXInflector(BasicInflector):
 
     def __init__(self, fa_path=None, lexc_path=None):
         super().__init__(fa_path, lexc_path)
-        # self.adj_inflector = ADJInflector('meta/automata/ADJ.fa')
-        self.adj_inflector = Inflectors.ADJInflector('meta/automata/ADJ.fa')
+        self.adj_inflector = ADJInflector('meta/automata/ADJ.fa')
 
     def umlaut(self, token: str):
         if '&' not in token:
@@ -181,8 +180,7 @@ class NOUNInflector(BasicInflector):
 
     def __init__(self, fa_path=None, lexc_path=None):
         super().__init__(fa_path, lexc_path)
-        # self.adj_inflector = ADJInflector('meta/automata/ADJ.fa')
-        self.adj_inflector = Inflectors.ADJInflector('meta/automata/ADJ.fa')
+        self.adj_inflector = ADJInflector('meta/automata/ADJ.fa')
 
     def __call__(self, token, target_tags):
         
