@@ -1,0 +1,17 @@
+{
+	"ADJ": 		[	"ADJInflector", 	"meta/automata/ADJ.fa", 	"meta/lexicons/ADJ.lexc"	],
+	"ADP": 		[	"ADPInflector", 	null, 						"meta/lexicons/ADP.lexc"	],
+	"ADV": 		[	"ADJInflector", 	"meta/automata/ADV.fa", 	"meta/lexicons/ADV.lexc"	],
+	"AUX": 		[	"AUXInflector",		"meta/automata/VERB.fa",	"meta/lexicons/AUX.lexc"	],
+	"CCONJ": 	[	"Uninflected", 		null, 						null						],
+	"DET": 		[	"DETInflector" 		"meta/automata/DET.fa", 	"meta/lexicons/DET.lexc"	],
+	"INTJ": 	[	"Uninflected", 		null, 						null						],
+	"NOUN": 	[	"NOUNInflector",	"meta/automata/NOUN.fa", 	"meta/lexicons/NOUN.lexc"	],
+	"NUM": 		[	"Uninflected", 		null, 						null						],
+	"PART": 	[	"Uninflected", 		null, 						null						],
+	"PRON": 	[	"PRONInflector",	"meta/automata/DET.fa",		"meta/lexicons/PRON.lexc"	],
+	"PROPN": 	[	"PROPNInflector",	"meta/automata/PROPN.fa",	null						],				
+	"SCONJ": 	[	"Uninflected", 		null, 						null						],
+	"VERB": 	[	"VERBInflector",	"meta/automata/VERB.fa",	"meta/lexicons/VERB.lexc"	],
+	"X": 		[	"Uninflected", 		null, 						null						]
+}
