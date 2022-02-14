@@ -18,6 +18,9 @@ müssen+Mood=Ind|Number=Sing|Person=2|Tense=Pres|Verbform=Fin->musst
 müssen+Mood=Ind|Number=Sing|Person=[1,3]|Tense=Pres|Verbform=Fin->muss
 müssen+Tense=Past|VerbForm=Fin->musste&
 müssen+Tense=Past|Verbform=Part->#musst
+sein+Mood=Imp|Number=Plur|Person=2->seid
+sein+Mood=Imp|Number=Plur|Person=[1,2]->sein
+sein+Mood=Imp|Number=Sing|Person=2->sei
 sein+Mood=Ind|Number=Plur|Person=2|Tense=Pres|Verbform=Fin->seid
 sein+Mood=Ind|Number=Plur|Person=[1,3]|Tense=Pres|Verbform=Fin->sind
 sein+Mood=Ind|Number=Sing|Person=2|Tense=Pres|Verbform=Fin->bist
