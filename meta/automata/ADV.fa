@@ -9,7 +9,7 @@ e(?=$)+Degree=Cmp->
 
 e(?=[rl]$)+Degree=Cmp->
 
-(?<=[dtsßz])$+Degree=Sup->e
+(?<=[dtsßxz])$+Degree=Sup->e
 (?<=sch)$+Degree=Sup->e
 
 	# Regular Model
