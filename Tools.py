@@ -8,10 +8,10 @@ import warnings
 import spacy
 
 # obtain required json data
-with open('meta/LabelsScheme.json') as json_file:
+with open('DERBI/meta/LabelsScheme.json') as json_file:
     LabelsScheme = json.load(json_file)
     
-with open('meta/ValidFeatures.json') as json_file:
+with open('DERBI/meta/ValidFeatures.json') as json_file:
     ValidFeatures = json.load(json_file)
 
 # json data links
