@@ -1,7 +1,8 @@
-import spacy
-import re
-import os
 import json
+import os
+import re
+
+import spacy
 
 # in DeInflector we need a compound splitter; we use dtuggener/CharSplit.
 # to access it, we first need do some manipulations:
@@ -19,10 +20,10 @@ filepath = os.path.join('CharSplit/charsplit', '__init__.py')
 with open(filepath, 'w') as i:
     i.write('')
     # finally import
-from DeInflector.CharSplit.charsplit.splitter import Splitter
+from CharSplit.charsplit.splitter import Splitter
 splitter = Splitter()
 
-from DeInflector import Tools
+import Tools
 
 
 # Basic Parent Class
