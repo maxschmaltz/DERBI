@@ -15,8 +15,8 @@ with open('meta/ValidFeatures.json') as json_file:
     ValidFeatures = json.load(json_file)
 
 # json data links
-labels_scheme_link = 'https://github.com/maxschmaltz/DeInflector/blob/main/meta/LabelsScheme.json'
-valid_features_link = 'https://github.com/maxschmaltz/DeInflector/blob/main/meta/ValidFeatures.json'
+labels_scheme_link = 'https://github.com/maxschmaltz/DERBI/blob/main/meta/LabelsScheme.json'
+valid_features_link = 'https://github.com/maxschmaltz/DERBI/blob/main/meta/ValidFeatures.json'
 
 # transform Universal Features 'Name=Value' notation to python dict, for example, 
 # 'Case=Nom|Gender=Masc|Number=Plur' -> {'Case': 'Nom', 'Gender': 'Masc', 'Number': 'Plur'} 
