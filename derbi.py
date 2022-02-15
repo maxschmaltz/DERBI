@@ -88,7 +88,7 @@ class DERBI:
         self.to_inflect = {
             str(ind): {
             'token': self.doc[ind],
-            'target_tags': '' if not len(tagset) else self.TagsProcessor.sub_tags(self.doc[ind], tagset),
+            'target_tags': '' if not len(tagset) else self.TagsProcessor.sub_tags(self.doc[ind], tagset)
             } for ind, tagset in zip(indices, target_tags)}
         # obtain the results for each token
         for data in self.to_inflect.values():
