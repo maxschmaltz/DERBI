@@ -1,5 +1,11 @@
 # import spacy
 import Tools
+
+from git import Repo
+Repo.clone_from('https://github.com/dtuggener/CharSplit', 'CharSplit')
+from charsplit import Splitter
+splitter = Splitter()
+
 import re
 
 # Basic Parent Class
