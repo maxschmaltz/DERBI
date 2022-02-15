@@ -172,7 +172,7 @@ class AUXInflector(BasicInflector):
     def __init__(self, fa_path: str=None, lexc_path: str=None):
         super().__init__(fa_path, lexc_path)
         # ADJInflector for participles
-        self.adj_inflector = ADJInflector('meta/automata/ADJ.fa')
+        self.adj_inflector = ADJInflector('DERBI/meta/automata/ADJ.fa')
 
     # strong german verbs toss an umlaut
     # when Mood=Sub, 
@@ -246,7 +246,7 @@ class NOUNInflector(BasicInflector):
     def __init__(self, fa_path: str=None, lexc_path: str=None):
         super().__init__(fa_path, lexc_path)
         # ADJInflector for nouns of adjective declination
-        self.adj_inflector = ADJInflector('meta/automata/ADJ.fa')
+        self.adj_inflector = ADJInflector('DERBI/meta/automata/ADJ.fa')
 
     def __call__(self, token: spacy.tokens.token.Token, target_tags: str) -> str:        
         # adjective declination nouns
