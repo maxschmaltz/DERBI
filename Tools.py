@@ -107,8 +107,14 @@ class TagsProcessor:
         # apply filter
         curr_filter = self.filter.get(pos, [])
         for key in tagset.keys():
-            if (key in curr_filter) and (tagset[key] != tok.morph.get(key)[0]):
+            if key == 'Prontype':
+                actual_feat = tok.morph.get('PronType')
+            else:
+                actual_feat = tok.morph.get(key)
+            if ((key in curr_filter) and (not len(actual_feat)) or
+                (key in curr_filter) and (tagset[key] != actual_feat[0])):
                 raise ValueError('Category "' + key + '" cannot be alternated for POS "' + pos + '".')
+
 
     # main tags processing function 
     def sub_tags(self, tok: spacy.tokens.token.Token, target_tags: dict) -> str:
