@@ -68,8 +68,8 @@ class DeInflector:
     def __call__(self, text: str, target_tags: dict or list[dict]=None, indices: int or list[int]=None) -> str:
         # check if the target tagsets and indices of to-be-inflected tokens were provided
         if isinstance(target_tags, dict):
-            if not len(target_tags):
-                raise ValueError('At list one key-value pair required in target tags.')
+#             if not len(target_tags):
+#                 raise ValueError('At list one key-value pair required in target tags.')
             target_tags = [target_tags]
         if target_tags is None:
             warnings.warn('No tags were provided; none of the tokens will be inflected.', Warning)
