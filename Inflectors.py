@@ -6,8 +6,8 @@ import json
 # in DeInflector we need a compound splitter; we use dtuggener/CharSplit.
 # to access it, we first need do some manipulations:
     # clone to folder 'Charsplit'
-from git import Repo
-Repo.clone_from('https://github.com/dtuggener/CharSplit', 'CharSplit')
+# from git import Repo
+# Repo.clone_from('https://github.com/dtuggener/CharSplit', 'CharSplit')
     # in folder 'Charsplit' create an empty file '__init__.py' 
     # for python to recognize the folder as a package
 filepath = os.path.join('CharSplit', '__init__.py')
@@ -15,10 +15,11 @@ with open(filepath, 'w') as i:
     i.write('')
     # in file 'Charsplit/charsplit/__init__.py' we delete all the text
     # as running it, python throws an exception
-with open('Charsplit/charsplit/__init__.py', 'w') as i:
+filepath = os.path.join('CharSplit/charsplit', '__init__.py')
+with open(filepath, 'w') as i:
     i.write('')
     # finally import
-from DeInflector.Charsplit.charsplit import Splitter
+from DeInflector.CharSplit.charsplit.splitter import Splitter
 splitter = Splitter()
 
 from DeInflector import Tools
