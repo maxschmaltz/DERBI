@@ -1,6 +1,7 @@
 import spacy
 import re
 import os
+import json
 
 # in DeInflector we need a compound splitter; we use dtuggener/CharSplit.
 # to access it, we first need do some manipulations:
