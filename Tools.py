@@ -117,7 +117,7 @@ class TagsProcessor:
 
 
     # main tags processing function 
-    def sub_tags(self, tok: spacy.tokens.token.Token, target_tags: dict) -> str:
+    def sub_tags(self, tok: spacy.tokens.token.Token, target_tags: dict) -> str or bool:
         target_tags = self.normalize_tags(target_tags)
         lemma, morph, pos = tok.lemma_, tok.morph, tok.pos_
         self.filter_target_tags(target_tags, tok)
@@ -129,7 +129,7 @@ class TagsProcessor:
         
         # check if anything changed
         if target_morph == str(morph):
-            return str(morph)
+            return False
         
         # replace some features for AUXs and VERBs
         if (tok.pos_ in ['AUX', 'VERB']) and ('Verbform=Part' in target_morph):
