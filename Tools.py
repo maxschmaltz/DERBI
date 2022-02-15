@@ -107,7 +107,7 @@ class TagsProcessor:
         # apply filter
         curr_filter = self.filter.get(pos, [])
         for key in tagset.keys():
-            if (key in curr_filter) and (tagset[key] != tok.morph.get(key)):
+            if (key in curr_filter) and (tagset[key] != tok.morph.get(key)[0]):
                 raise ValueError('Category "' + key + '" cannot be alternated for POS "' + pos + '".')
 
     # main tags processing function 
