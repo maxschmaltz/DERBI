@@ -90,7 +90,8 @@ class TagsProcessor:
         return {key.capitalize().strip(): value.capitalize().strip() for key, value in tags.items()}
 
     # not all the categories can be alternated
-    def filter_target_tags(self, tagset: dict, pos: str):
+    def filter_target_tags(self, tagset: dict, tok: spacy.tokens.token.Token):
+        pos = tok.pos_
         self.filter = {
             'ADV': ['PronType'],
             'DET': ['Definite', 'Prontype', 'Poss'],
@@ -106,14 +107,14 @@ class TagsProcessor:
         # apply filter
         curr_filter = self.filter.get(pos, [])
         for key in tagset.keys():
-            if (key in curr_filter) and (tagset[key] != pos.morph.get(key)):
+            if (key in curr_filter) and (tagset[key] != tok.morph.get(key)):
                 raise ValueError('Category "' + key + '" cannot be alternated for POS "' + pos + '".')
 
     # main tags processing function 
     def sub_tags(self, tok: spacy.tokens.token.Token, target_tags: dict) -> str:
         target_tags = self.normalize_tags(target_tags)
         lemma, morph, pos = tok.lemma_, tok.morph, tok.pos_
-        self.filter_target_tags(target_tags, pos)
+        self.filter_target_tags(target_tags, tok)
 
         morph_tags = self.normalize_tags(split_tags(str(morph)))
         # merge and update the features
