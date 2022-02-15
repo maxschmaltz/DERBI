@@ -5,7 +5,7 @@ import re
 # import spaCy
 import spacy
 
-# in DeInflector we need a compound splitter; we use dtuggener/CharSplit.
+# in DERBI we need a compound splitter; we use dtuggener/CharSplit.
 # to access it, we first need do some manipulations:
     # clone to folder 'Charsplit'
 from git import Repo
@@ -29,7 +29,7 @@ import Tools
 
 '''
 For each POS we have its own inflector (the list of correspondance can be found at
-https://github.com/maxschmaltz/DeInflector/blob/main/Router.json).
+https://github.com/maxschmaltz/DERBI/blob/main/Router.json).
 Each one is organized generally the same way though:
     1. Search in lexicon. 
         If the desired form of the input token is 
