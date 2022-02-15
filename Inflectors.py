@@ -25,7 +25,7 @@ from CharSplit.charsplit.splitter import Splitter
 splitter = Splitter()
 
 # import required scripts
-import Tools
+from DERBI import Tools
 
 '''
 For each POS we have its own inflector (the list of correspondance can be found at
