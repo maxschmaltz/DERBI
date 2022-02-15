@@ -41,6 +41,10 @@ ich+Case=[Acc,Dat]|Number=Plur|Person=1|Prontype=Prs->uns
 ich+Case=[Acc,Dat]|Number=Plur|Person=2|Prontype=Prs->euch
 ich+Case=[Acc,Nom]|Gender=Neut|Number=Sing|Person=3|Prontype=Prs->es
 man+Case=*|Gender=*|Number=*|Prontype=Ind->man
+niemand+Case=Acc|Gender=*|Number=*|Prontype=Ind->niemanden
+niemand+Case=Dat|Gender=*|Number=*|Prontype=Ind->niemandem
+niemand+Case=Gen|Gender=*|Number=*|Prontype=Ind->niemandes
+niemand+Case=Nom|Gender=*|Number=*|Prontype=Ind->niemand
 nichts+Case=*|Gender=*|Number=*|Prontype=Ind->nichts
 sich+Case=Acc|Number=Sing|Person=1|Prontype=Prs|Reflex=Yes->mich
 sich+Case=Acc|Number=Sing|Person=2|Prontype=Prs|Reflex=Yes->dich
