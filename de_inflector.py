@@ -14,6 +14,11 @@ with open('Router.json') as r:
     
 # wrapper for inflection
 '''
+In fact, we do not have an unified inflector,
+we have an inflector for each POS.
+To provide a comfortable usage experience, we must
+organize a wrapper that would gather them all together 
+to be able to call the needed one; so here it is! 
 Wrapper performance consists of three stages:
     1. Take and process input.
         1.1. Create spacy Doc based on the input text;
