@@ -15,7 +15,7 @@
 			
 				# Sub1 Marker
 			
-$+Mood=Sub1|Verbform=Fin->K1
+$+Mood=Sub|Tense=Pres|Verbform=Fin->K1
 
 			# Past: Ind and Sub
 		
@@ -23,12 +23,12 @@ $+Mood=Sub1|Verbform=Fin->K1
 
 			# Conjugation
 
-$+Mood=[Ind,Sub1]|Number=Sing|Person=1|Tense=Pres|Verbform=Fin->e
+$+Mood=[Ind,Sub]|Number=Sing|Person=1|Tense=Pres|Verbform=Fin->e
 $+Mood=[Ind,Sub]|Number=Sing|Person=[1,3]|Tense=Past|Verbform=Fin->
-$+Mood=[Ind,Sub1,Sub]|Number=Sing|Person=2|Tense=[Past,Pres]|Verbform=Fin->St
+$+Mood=[Ind,Sub]|Number=Sing|Person=2|Tense=[Past,Pres]|Verbform=Fin->St
 $+Mood=Ind|Number=Sing|Person=3|Tense=Pres|Verbform=Fin->t
-$+Mood=[Ind,Sub1,Sub]|Number=Plur|Person=[1,3]|Tense=[Past,Pres]|Verbform=Fin->en
-$+Mood=[Ind,Sub1,Sub]|Number=Plur|Person=2|Tense=[Past,Pres]|Verbform=Fin->t
+$+Mood=[Ind,Sub]|Number=Plur|Person=[1,3]|Tense=[Past,Pres]|Verbform=Fin->en
+$+Mood=[Ind,Sub]|Number=Plur|Person=2|Tense=[Past,Pres]|Verbform=Fin->t
 
 				# Past Forms for Strong Verbs (we have only stems after lexicon)
 
