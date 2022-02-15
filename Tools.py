@@ -1,45 +1,60 @@
+# import required modules / functions
+from numpy import argmin
+from collections import defaultdict
 import json
 import re
-from collections import defaultdict
 import warnings
-from numpy import argmin
+# import spaCy
 import spacy
 
-
+# obtain required json data
 with open('meta/LabelsScheme.json') as json_file:
     LabelsScheme = json.load(json_file)
     
 with open('meta/ValidFeatures.json') as json_file:
     ValidFeatures = json.load(json_file)
 
-
+# json data links
 labels_scheme_link = 'https://github.com/maxschmaltz/DeInflector/blob/main/meta/LabelsScheme.json'
 valid_features_link = 'https://github.com/maxschmaltz/DeInflector/blob/main/meta/ValidFeatures.json'
 
+# transform Universal Features 'Name=Value' notation to python dict, for example, 
+# 'Case=Nom|Gender=Masc|Number=Plur' -> {'Case': 'Nom', 'Gender': 'Masc', 'Number': 'Plur'} 
 def split_tags(tags: str) -> dict:
     if tags == '':
         return {}
     return {cat_feat.split('=')[0]: cat_feat.split('=')[1] for cat_feat in tags.split('|')}
 
+# do the opposite, for example,
+# {'Case': 'Nom', 'Gender': 'Masc', 'Number': 'Plur'} -> 'Case=Nom|Gender=Masc|Number=Plur' 
 def merge_tags(tags: dict) -> str:
     return '|'.join([cat + '=' + feat for cat, feat in tags.items()])
 
 
+# TagsSearcher takes a tagset and compares it to data presented in out json data:
+# searches if the tagset is in LabelsScheme; sets default values in accordance with ValidFeatures
 class TagsSearcher:
 
+    # refer to ValidFeatures to check the input categories and features are valid 
     def check_tags(self, tags: dict):
         for cat, feat in tags.items():
+            # check the category (for example, 'PP', 'VVN' are not accepted)
             if ValidFeatures.get(cat) is None:
                 raise ValueError('Category "' + cat + '" is not supported.\nValid categories are available at ' 
                                  + valid_features_link + '.')
+            # check the feature (for example, 'Dat' is not accepted for 'Number')
             if feat not in ValidFeatures[cat]:
                 raise ValueError('Feature "' + feat + '" is not valid for category "' + cat + 
                                  '".\nValid features are available at ' + valid_features_link + '.')
     
+    # primary search checks strict match
     def primary_search(self, morph: str, pos: str) -> bool:
         self.check_tags(split_tags(morph))
         return morph not in LabelsScheme.get(pos, [])
 
+    # secondary search checks partial match: if in label scheme there is such a tagset
+    # that for each category-feature pair in it either the feature is in target tagset or 
+    # the category is missing there
     def secondary_search(self, morph: str, pos: str) -> None or str:
         morph_tags = split_tags(morph)
         self.check_tags(morph_tags)
@@ -52,6 +67,9 @@ class TagsSearcher:
         if not len(matches):
             return
 
+        # then if we found such a tagset, we want to set our 
+        # target tagset's missing categories as default;
+        # the default value for each category is [0] element of its list in ValidFeatures 
         extract_min = lambda m: m[argmin([len(f.split('|')) for f in m])]
         res_tags = merge_tags({cat: (ValidFeatures[cat][0] if morph_tags.get(cat) is None 
                                      else morph_tags[cat]) for cat, feat in split_tags(extract_min(matches)).items()})
@@ -60,14 +78,18 @@ class TagsSearcher:
         return res_tags
 
     
+# TagsProcessor contains methods for input tags transformation
+# the way we need it
 class TagsProcessor:
 
     def __init__(self):
         self.Searcher = TagsSearcher()
 
+    # we want all the tags to be normalized for us not to depend on the case
     def normalize_tags(self, tags: dict) -> dict:
         return {key.capitalize().strip(): value.capitalize().strip() for key, value in tags.items()}
 
+    # not all the categories can be alternated
     def filter_target_tags(self, tagset: dict, pos: str):
         self.filter = {
             'ADV': ['PronType'],
@@ -81,12 +103,13 @@ class TagsProcessor:
         # let NOUNs with adjective declination pass           
         if (pos == 'NOUN') and (tagset.get('Declination') is not None):
             return
-        
+        # apply filter
         curr_filter = self.filter.get(pos, [])
         for key in tagset.keys():
             if key in curr_filter:
                 raise ValueError('Category "' + key + '" cannot be alternated for POS "' + pos + '".')
 
+    # main tags processing function 
     def sub_tags(self, tok: spacy.tokens.token.Token, target_tags: dict) -> str:
         target_tags = self.normalize_tags(target_tags)
         lemma, morph, pos = tok.lemma_, tok.morph, tok.pos_
@@ -130,23 +153,64 @@ class TagsProcessor:
                          '" of POS "' + pos + '".\nLabels scheme is available at: ' + labels_scheme_link + '.')
         
         
+''' 
+The following classes are essential for DeInflector.
+We have two ways to inflect words:
+    1. Lexicons. 
+        Lexicons are applicable when we need to process a special case,
+        that does not correspond to the regular inflection model, i.e. exception;
+        As sometimes only stem, not the whole word, inflects different, 
+        we would like to leave an opportunity to apply rules with 
+        partial match of the features; for that we check partial match 
+        and remove all the features that have been matched (for them
+        not to be used in automata, see below).
+        For example, for Tense=Past of VERBs we often inflect only stems
+        with lexicon, and the flexion is added in automata
+        in accordance to the regular model (bringen+Tense=Past|Person,Number...) ->
+        -> brachte+Person,Number... -> ...
+    2. Automata.
+        Automata describe regular models. Unlike lexicon, regular model
+        requires full match.
+Despite the difference between the two ways, the general approach is the same:
+for each rule we check if it's applicable and, if it is, we replace the part of the word
+the way defined in the rule.
+'''
+'''
+Each rule consists of three parts:
+    1. Re pattern to be substituted;
+    2. Conditions of applicability;
+    3. Substring the match must be substituted with.
+    
+Rules are written as:
+1+2->3
+
+Conditions of applicability are usual 'Name=Value' notation 
+with some extentions:
+    1. Multiple choice is possible (Case=[C1,C2,C3] is for Case=C1 or Case=C2 or ...);
+    2. Independance is possible (Case=* if for any valid Case);
+    3. Exclusion is possible (Case=[^C1] if for any valid Case but C1).
+'''
 class Lexicon:
 
-    def __init__(self, rules_path):
+    def __init__(self, rules_path: str):
         with open(rules_path, 'r') as rules_file:
             rules = [line for line in rules_file]
         self.rules = defaultdict(list)
+        # notation extentions patterns
         self.exclude_pattern = re.compile('(?<=\[\^)(\w+,{0,1})+(?=\])')
         self.multiple_pattern = re.compile('(?<=\[)(\w+,{0,1})+(?=\])')
+        # collect the rules from text file
         for rule in rules:
             self.interpret(rule)
 
-    def interpret(self, rule):
+    def interpret(self, rule: str):
         try: 
             splitted = re.split('\+|->', rule)
+            # 1, 2, 3 (see above)
             input, feats, output = splitted[0], splitted[1], splitted[2]
             splitted_feats = split_tags(feats)
             rule_dict = {}
+            # interpret considering extentions
             for cat, feat in splitted_feats.items():
                 if feat == '*':
                     rule_dict[cat] = ValidFeatures[cat]
@@ -164,21 +228,25 @@ class Lexicon:
 
 class StateMachine:
 
-    def __init__(self, rules_path):
+    def __init__(self, rules_path: str):
         with open(rules_path, 'r') as rules_file:
             rules = [line for line in rules_file]
         self.rules = []
+        # notation extentions patterns
         self.exclude_pattern = re.compile('(?<=\[\^)(\w+,{0,1})+(?=\])')
         self.multiple_pattern = re.compile('(?<=\[)(\w+,{0,1})+(?=\])')
+        # collect the rules from text file
         for rule in rules:
             self.interpret(rule)
 
-    def interpret(self, rule):
+    def interpret(self, rule; str):
         try: 
             splitted = re.split('\+|->', rule)
+            # 1, 2, 3 (see above)
             pattern, feats, to_sub = splitted[0], splitted[1], splitted[2]
             splitted_feats = split_tags(feats)
             rule_dict = {}
+            # interpret considering extentions
             for cat, feat in splitted_feats.items():
                 if feat == '*':
                     rule_dict[cat] = ValidFeatures[cat]
