@@ -366,14 +366,14 @@ sein+Mood=Imp|Number=Plur|Person=[1,2]->sein
 sein+Mood=Imp|Number=Sing|Person=2->sei
 sein+Mood=Ind|Number=Plur|Person=2|Tense=Pres|Verbform=Fin->seid
 sein+Mood=Ind|Number=Plur|Person=[1,3]|Tense=Pres|Verbform=Fin->sind
+sein+Mood=Ind|Number=Sing|Person=1|Tense=Pres|Verbform=Fin->bin
 sein+Mood=Ind|Number=Sing|Person=2|Tense=Pres|Verbform=Fin->bist
-sein+Mood=Ind|Number=Sing|Person=3|Tense=Pres|Verbform=Fin->bin
 sein+Mood=Ind|Number=Sing|Person=3|Tense=Pres|Verbform=Fin->ist
 sein+Mood=Sub1|Number=Plur|Person=2|Tense=Pres|Verbform=Fin->seiet
 sein+Mood=Sub1|Number=Plur|Person=[1,3]|Tense=Pres|Verbform=Fin->seien
 sein+Mood=Sub1|Number=Sing|Person=2|Tense=Pres|Verbform=Fin->seiest
-sein+Mood=Sub1|Number=Sing|Person=[1,3]|Tense=Pres|Verbform=Fin->sie
-sein+Tense=Past|Verbform=Fin->war&
+sein+Mood=Sub1|Number=Sing|Person=[1,3]|Tense=Pres|Verbform=Fin->sei
+sein+Tense=Past|VerbForm=Fin->war&
 sein+Tense=Past|Verbform=Part->#wesen
 senden+Tense=Past|Verbform=Fin->sandte&
 senden+Tense=Past|Verbform=Part->#sandt
