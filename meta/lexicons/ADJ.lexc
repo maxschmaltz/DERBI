@@ -1,6 +1,6 @@
 bald+Degree=Cmp->eher
 bald+Degree=Sup->ehest
-fromm+Degree=Cmp->frommer 
+fromm+Degree=Cmp->frommer
 fromm+Degree=Sup->frommst
 gern+Degree=Cmp->lieber
 gern+Degree=Sup->liebst
@@ -13,7 +13,7 @@ hoch+Degree=Cmp->höher
 hoch+Degree=Sup->höchst
 nah+Degree=Cmp->näher
 nah+Degree=Sup->nächst
-schmal+Degree=Cmp->schmaler 
+schmal+Degree=Cmp->schmaler
 schmal+Degree=Sup->schmalst
 viel+Degree=Cmp->mehr
 viel+Degree=Sup->meist
