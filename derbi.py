@@ -8,7 +8,7 @@ import spacy
 from DERBI import Tools, Inflectors
 # Router contains information about 
 # __init__ of each pos inflector
-with open('Router.json') as r:
+with open('DERBI/Router.json') as r:
     Router = json.load(r)
 
     
