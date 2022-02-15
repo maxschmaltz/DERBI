@@ -302,7 +302,7 @@ class PRONInflector(BasicInflector):
 # PROPN
 class PROPNInflector(BasicInflector):
 
-    def search_in_lexicon(self, args*):
+    def search_in_lexicon(self, *args):
         pass
 
     def __call__(self, token: spacy.tokens.token.Token, target_tags: str) -> str:
