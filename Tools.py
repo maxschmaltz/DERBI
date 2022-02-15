@@ -239,7 +239,7 @@ class StateMachine:
         for rule in rules:
             self.interpret(rule)
 
-    def interpret(self, rule; str):
+    def interpret(self, rule: str):
         try: 
             splitted = re.split('\+|->', rule)
             # 1, 2, 3 (see above)
