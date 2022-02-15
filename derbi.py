@@ -36,7 +36,7 @@ Wrapper performance consists of three stages:
         with the corresponding results in the input text.
         3.2. Return the result.
 '''
-class DeInflector:
+class DERBI:
 
     def __init__(self, model: spacy.lang.de.German):
         # as the model uses spaCy, we require one of the German spaCy models;
