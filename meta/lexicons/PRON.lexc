@@ -40,6 +40,8 @@ ich+Case=Nom|Number=Sing|Person=2|Prontype=Prs->du
 ich+Case=[Acc,Dat]|Number=Plur|Person=1|Prontype=Prs->uns
 ich+Case=[Acc,Dat]|Number=Plur|Person=2|Prontype=Prs->euch
 ich+Case=[Acc,Nom]|Gender=Neut|Number=Sing|Person=3|Prontype=Prs->es
+man+Case=*|Gender=*|Number=*|Prontype=Ind->man
+nichts+Case=*|Gender=*|Number=*|Prontype=Ind->nichts
 sich+Case=Acc|Number=Sing|Person=1|Prontype=Prs|Reflex=Yes->mich
 sich+Case=Acc|Number=Sing|Person=2|Prontype=Prs|Reflex=Yes->dich
 sich+Case=Dat|Number=Sing|Person=1|Prontype=Prs|Reflex=Yes->mir
