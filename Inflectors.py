@@ -248,7 +248,7 @@ class NOUNInflector(BasicInflector):
         # ADJInflector for nouns of adjective declination
         self.adj_inflector = ADJInflector('meta/automata/ADJ.fa')
 
-    def __call__(self, token: spacy.tokens.token.Token, target_tag0s: str) -> str:        
+    def __call__(self, token: spacy.tokens.token.Token, target_tags: str) -> str:        
         # adjective declination nouns
         if 'Declination=' in target_tags:
             if re.search('e[mnrs]{0,1}$', token.norm_) is None:
