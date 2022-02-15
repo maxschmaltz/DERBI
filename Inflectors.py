@@ -316,7 +316,7 @@ class VERBInflector(AUXInflector):
     def __init__(self, fa_path: str=None, lexc_path: str=None):
         super().__init__(fa_path, lexc_path)
         # we need to distinct between separable and inseparable prefixes
-        with open('meta/lexicons/verb_prefixes.json') as j:
+        with open('DERBI/meta/lexicons/verb_prefixes.json') as j:
             self.prefixes = json.load(j)
 
     # split a verb into prefixes and non-prefix-part
