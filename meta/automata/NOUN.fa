@@ -25,7 +25,7 @@ _WEAK_+->en%
 
 _NULL_PLUR_+Case=Gen|Number=Sing->s%
 (?<!n)_NULL_PLUR_+Case=Dat|Number=Plur->n%
-_NULL_PLUR_+->% 
+_NULL_PLUR_+->%
 
 			# Other Fem
 			
