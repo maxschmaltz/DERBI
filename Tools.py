@@ -161,7 +161,7 @@ class TagsProcessor:
         
         
 ''' 
-The following classes are essential for DeInflector.
+The following classes are essential for DERBI.
 We have two ways to inflect words:
     1. Lexicons. 
         Lexicons are applicable when we need to process a special case,
