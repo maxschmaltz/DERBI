@@ -144,7 +144,7 @@ class TagsProcessor:
         if not search_failed:
             return target_morph
 
-        if pos in ['ADJ', 'ADP', 'AUX', 'NOUN', 'PRON', 'PROPN', 'VERB']:
+        if pos in ['ADJ', 'ADP', 'AUX', 'DET', 'NOUN', 'PRON', 'PROPN', 'VERB']:
             # additional stage for the POSs that can have any forms:
             # there's a chance that the user did not insert all the tags
             # so we will fill it out as default if necessary
