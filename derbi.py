@@ -5,7 +5,7 @@ import warnings
 # import spaCy
 import spacy
 # import required scripts
-import Tools, Inflectors
+from DERBI import Tools, Inflectors
 # Router contains information about 
 # __init__ of each pos inflector
 with open('Router.json') as r:
