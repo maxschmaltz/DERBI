@@ -388,11 +388,11 @@ class VERBInflector(AUXInflector):
         if token.lemma_ == 'habe':
             token.lemma_ = 'haben'
             
-        if 'Verbform=Inf' in target_tags:
+        if target_tags == 'Verbform=Inf':
             return token.lemma_
         
-        if 'Verbform=Part' in target_tags:
-            target_tags = re.sub('Verbform=Part', 'Tense=Past|Verbform=Part', target_tags)
+        if target_tags == 'Verbform=Part':
+            target_tags = 'Tense=Past|Verbform=Part'
         
         # separate prefixes
         prefixes, insep, stem = self.sep_prefixes(token.lemma_.lower())
