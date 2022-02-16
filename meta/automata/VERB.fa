@@ -15,7 +15,7 @@
 			
 				# Sub Pres Marker
 			
-$+Mood=Sub|Tense=Pres|Verbform=Fin->E
+(?<!E)$+Mood=Sub|Tense=Pres|Verbform=Fin->E
 
 			# Past: Ind and Sub Past
 		
