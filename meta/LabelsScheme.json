@@ -509,6 +509,7 @@
 			"Case=Nom|Gender=Neut|Number=Sing|Prontype=Dem",
 			"Case=Nom|Gender=Neut|Number=Sing|Prontype=Ind",
 			"Case=Nom|Gender=Neut|Number=Sing|Prontype=Int",
+			"Prontype=Ind",
 			"Prontype=Int"
 		],
 	"INTJ":
@@ -789,7 +790,9 @@
 			"Case=Nom|Number=Plur|Prontype=Rel",
 			"Case=Nom|Number=Sing|Person=1|Prontype=Prs",
 			"Case=Nom|Number=Sing|Person=2|Prontype=Prs",
-			"Case=Nom|Number=Sing|Prontype=Rel"
+			"Case=Nom|Number=Sing|Prontype=Rel",
+			"Prontype=Ind",
+			"Prontype=Int"
 		],
 	"PROPN":
 		[
