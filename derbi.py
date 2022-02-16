@@ -92,7 +92,8 @@ class DERBI:
             } for ind, tagset in zip(indices, target_tags)}
         # obtain the results for each token
         for data in self.to_inflect.values():
-            if data['target_tags'] == '<STOPTAG>':
+            # check if anything changed
+            if data['target_tags'] == str(data['token'].morph):
                 data['result'] = data['token'].text.lower()
             else:
                 data['result'] = self.inflect(data['token'], data['target_tags'])
