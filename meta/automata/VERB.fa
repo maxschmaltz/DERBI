@@ -76,7 +76,7 @@ er$+Tense=Pres|Verbform=Part->rend
 ^+Tense=Past|Verbform=Part->#
 
 $+Tense=Past|Verbform=Part->t
-#(?=\w+iert$)+->
+#(?=.+iert$)+->
 
 		# Restore Markers
 		
@@ -93,6 +93,10 @@ E+->e
 
 eren$+->ern
 elen$+->eln
+
+chnt$+Tense=Past|Verbform=Fin->chnet
+fnt$+Tense=Past|Verbform=Fin->fnet
+tmt$+Tense=Past|Verbform=Fin->tmet
 			
 			# Ind Pres 2 Sing Marker
 			
