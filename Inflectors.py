@@ -191,6 +191,9 @@ class AUXInflector(BasicInflector):
         if ((token.lemma_.lower() in ['dürfen', 'können', 'mögen', 'müssen', 'sollen', 'wollen'])
                                                                 and ('Mood=Imp' in target_tags)):
             raise ValueError('No Imperative forms available for modal verbs.')
+            
+        if token.lemma_ == 'habe':
+            token.lemma_ = 'haben'
 
         output, remaining_tags = self.search_in_lexicon(token.lemma_.lower(), target_tags)
         if not(len(remaining_tags)):
@@ -378,6 +381,10 @@ class VERBInflector(AUXInflector):
         if ((token.lemma_.lower() in ['dürfen', 'können', 'mögen', 'müssen', 'sollen', 'wollen'])
                                                                 and ('Mood=Imp' in target_tags)):
             raise ValueError('No Imperative forms available for modal verbs.')
+        
+        if token.lemma_ == 'habe':
+            token.lemma_ = 'haben'
+        
         # separate prefixes
         prefixes, insep, stem = self.sep_prefixes(token.lemma_.lower())
 
