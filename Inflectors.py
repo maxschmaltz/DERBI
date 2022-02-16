@@ -125,15 +125,14 @@ class ADJInflector(BasicInflector):
         # (when Verbform=Part),
         # so we must just pass the following part then
         if not isinstance(token, str):
-            # somehow for ADV spacy add 'en' to lemma in Degree=Pos,
+            # somehow for ADV and ADJ spacy add 'en' to lemma in Degree=Pos,
             # e.g. 'schnell'.lemma_ = 'schnellen' but 'schneller'.lemma_ = 'schnell'
-            if (token.pos_ == 'ADV') and (token.text + 'en' == token.lemma_.lower()):
+            if (token.pos_ == 'ADV') and (token.text.lower() + 'en' == token.lemma_):
                 token.lemma_ = token.text
-
-            # somehow for ADV spacy add 'e' to lemma in some forms,
-            # e.g. 'rote'.lemma_ = 'rote' but 'roten'.lemma_ = 'rot'
-            if (token.pos_ == 'ADJ') and (token.lemma_.lower()[-1] == 'e'):
-                token.lemma_ = token.lemma_.lower()[:-1]
+            # somehow for ADV spacy add 'e'/'en'/... to lemma in some forms,
+            # e.g. 'rote'.lemma_ = 'rote' but 'roten'.lemma_ = 'rot' 
+            if (token.pos_ == 'ADJ') and (token.text.lower() == token.lemma_) and (len(Tools.split_tags(target_tags)) > 1):
+                token.lemma_ = re.sub('e[mnr]{0,1}$', '', token.lemma_)
 
             output, remaining_tags = self.search_in_lexicon(token.lemma_.lower(), target_tags)
             if not(len(remaining_tags)):
