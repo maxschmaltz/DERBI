@@ -384,6 +384,9 @@ class VERBInflector(AUXInflector):
         
         if token.lemma_ == 'habe':
             token.lemma_ = 'haben'
+            
+        if 'Verbform=Inf' in target_tags:
+            return token.lemma_
         
         # separate prefixes
         prefixes, insep, stem = self.sep_prefixes(token.lemma_.lower())
