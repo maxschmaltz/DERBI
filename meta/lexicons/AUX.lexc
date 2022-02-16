@@ -5,7 +5,7 @@ dürfen+Tense=Past|Verbform=Part->#durft
 haben+Mood=Ind|Number=Sing|Person=1|Tense=Pres|Verbform=Fin->habE
 haben+Mood=Ind|Number=Sing|Person=2|Tense=Pres|Verbform=Fin->hast
 haben+Mood=Ind|Number=Sing|Person=3|Tense=Pres|Verbform=Fin->hat
-haben+Tense=Past|Verbform=Fin->hatte&
+haben+Tense=Past|Verbform=Fin->hattE&
 können+Mood=Ind|Number=Sing|Person=2|Tense=Pres|Verbform=Fin->kannst
 können+Mood=Ind|Number=Sing|Person=[1,3]|Tense=Pres|Verbform=Fin->kann
 können+Tense=Past|Verbform=Fin->konntE&
