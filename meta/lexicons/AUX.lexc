@@ -10,6 +10,7 @@ können+Mood=Ind|Number=Sing|Person=2|Tense=Pres|Verbform=Fin->kannst
 können+Mood=Ind|Number=Sing|Person=[1,3]|Tense=Pres|Verbform=Fin->kann
 können+Tense=Past|Verbform=Fin->konntE&
 können+Tense=Past|Verbform=Part->#konnt
+mein+Verbform=Inf->sein
 mein+Mood=Imp|Number=Plur|Person=2->seid
 mein+Mood=Imp|Number=Plur|Person=[1,2]->sein
 mein+Mood=Imp|Number=Sing|Person=2->sei
@@ -24,7 +25,7 @@ mein+Mood=Sub|Number=Sing|Person=2|Tense=Pres|Verbform=Fin->seiest
 mein+Mood=Sub|Number=Sing|Person=[1,3]|Tense=Pres|Verbform=Fin->sei
 mein+Tense=Past|Verbform=Fin->war&
 mein+Tense=Past|Verbform=Part->#wesen
-mein+Verbform=Inf->sein
+meinen+Verbform=Inf->sein
 meinen+Mood=Imp|Number=Plur|Person=2->seid
 meinen+Mood=Imp|Number=Plur|Person=[1,2]->sein
 meinen+Mood=Imp|Number=Sing|Person=2->sei
@@ -39,7 +40,6 @@ meinen+Mood=Sub|Number=Sing|Person=2|Tense=Pres|Verbform=Fin->seiest
 meinen+Mood=Sub|Number=Sing|Person=[1,3]|Tense=Pres|Verbform=Fin->sei
 meinen+Tense=Past|Verbform=Fin->war&
 meinen+Tense=Past|Verbform=Part->#wesen
-meinen+Verbform=Inf->sein
 mögen+Mood=Ind|Number=Sing|Person=2|Tense=Pres|Verbform=Fin->magst
 mögen+Mood=Ind|Number=Sing|Person=[1,3]|Tense=Pres|Verbform=Fin->mag
 mögen+Tense=Past|Verbform=Fin->mochtE&
