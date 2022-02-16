@@ -3,9 +3,9 @@ der+Case=Dat|Definite=Def|Gender=*|Number=Plur|Prontype=Art->den
 der+Case=Dat|Definite=Def|Gender=[Masc,Neut]|Number=Sing|Prontype=Art->dem
 der+Case=Gen|Definite=Def|Gender=*|Number=Plur|Prontype=Art->der
 der+Case=Gen|Definite=Def|Gender=[Masc,Neut]|Number=Sing|Prontype=Art->des
-der+Case=Gen|Gender=*|Number=Plur|PronType=Rel->deren
-der+Case=Gen|Gender=Fem|Number=Sing|PronType=Rel->deren
-der+Case=Gen|Gender=[Masc,Neut]|Number=Sing|PronType=Rel->dessen
+der+Case=Gen|Gender=*|Number=Plur|Prontype=Rel->deren
+der+Case=Gen|Gender=Fem|Number=Sing|Prontype=Rel->deren
+der+Case=Gen|Gender=[Masc,Neut]|Number=Sing|Prontype=Rel->dessen
 der+Case=Nom|Definite=Def|Gender=Masc|Number=Sing|Prontype=Art->der
 der+Case=[Acc,Nom]|Definite=Def|Gender=*|Number=Plur|Prontype=Art->die
 der+Case=[Acc,Nom]|Definite=Def|Gender=Fem|Number=Sing|Prontype=Art->die
