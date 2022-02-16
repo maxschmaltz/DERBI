@@ -350,8 +350,8 @@
 			"Mood=Sub|Number=Sing|Person=1|Tense=Past|Verbform=Fin",
 			"Mood=Sub|Number=Sing|Person=2|Tense=Past|Verbform=Fin",
 			"Mood=Sub|Number=Sing|Person=3|Tense=Past|Verbform=Fin",
-			"Verbform=Inf",
-			"Verbform=Part"
+			"Tense=Past|Verbform=Part",
+			"Verbform=Inf"
 		],
 	"CCONJ":
 		[
@@ -964,8 +964,8 @@
 			"Mood=Sub|Number=Sing|Person=1|Tense=Past|Verbform=Fin",
 			"Mood=Sub|Number=Sing|Person=2|Tense=Past|Verbform=Fin",
 			"Mood=Sub|Number=Sing|Person=3|Tense=Past|Verbform=Fin",
-			"Verbform=Inf",
-			"Verbform=Part"
+			"Tense=Past|Verbform=Part",
+			"Verbform=Inf"
 		],
 	"X": 
 		[
