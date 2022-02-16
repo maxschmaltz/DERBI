@@ -151,7 +151,6 @@ greifen+Tense=Past|Verbform=Fin->griff&
 greifen+Tense=Past|Verbform=Part->#griffen
 gären+Tense=Past|Verbform=Fin->gor&
 gären+Tense=Past|Verbform=Part->#goren
-haben+Mood=Ind|Number=Sing|Person=1|Tense=Pres|Verbform=Fin->habE
 haben+Mood=Ind|Number=Sing|Person=2|Tense=Pres|Verbform=Fin->hast
 haben+Mood=Ind|Number=Sing|Person=3|Tense=Pres|Verbform=Fin->hat
 haben+Tense=Past|Verbform=Fin->hattE&
