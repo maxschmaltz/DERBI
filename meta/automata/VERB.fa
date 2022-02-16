@@ -13,7 +13,7 @@
 
 			# Pres: Ind and Sub Pres
 			
-				# Sub1 Marker
+				# Sub Pres Marker
 			
 $+Mood=Sub|Tense=Pres|Verbform=Fin->K1
 
@@ -73,14 +73,16 @@ $+Tense=Past|Verbform=Part->t
 
 		# Restore Markers
 		
-			# Sub1 Marker
+			# Sub Past Marker for Strong Verbs
+			
+(?<!e)&+Mood=Sub->&K1
+e&+Mood=Sub->K1&
+&+Mood=[^Sub]->
+		
+			# Sub Pres Marker
 		
 K1(?=e)+->
 K1+->e
-
-			# Sub2 Marker for Strong Verbs
-			
-(?<!e)&+Mood=Sub->&e
 
 			# Prothetical E Marker
 			
