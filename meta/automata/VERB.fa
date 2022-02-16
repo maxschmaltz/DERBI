@@ -90,6 +90,9 @@ $+Tense=Past|Verbform=Part->t
 		
 E(?=e)+->
 E+->e
+
+eren$+->ern
+elen$+->eln
 			
 			# Ind Pres 2 Sing Marker
 			
