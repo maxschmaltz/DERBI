@@ -70,6 +70,7 @@ er$+Tense=Pres|Verbform=Part->rend
 ^+Tense=Past|Verbform=Part->#
 
 $+Tense=Past|Verbform=Part->t
+#(?=>\w+iert$)+->
 
 		# Restore Markers
 		
