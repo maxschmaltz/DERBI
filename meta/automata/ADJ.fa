@@ -7,7 +7,7 @@
 e(?=$)+Degree=[^Sup]->%
 
 (?<!^and)e(?=[rl]$)+Degree=Pos->E
-e(?=[rl]$)+Degree=Cmp->
+(?<!^and)e(?=[rl]$)+Degree=Cmp->
 
 (?<=[dtsßxz])$+Degree=Sup->e
 (?<=sch)$+Degree=Sup->e
