@@ -76,6 +76,7 @@ $+Tense=Past|Verbform=Part->t
 			# Sub Past Marker for Strong Verbs
 			
 (?<![eE])&+Mood=Sub->&E
+[eE]&+Mood=Sub->&E
 &+Mood=[^Sub]->
 		
 			# Sub Pres Marker, Prothetical E Marker
