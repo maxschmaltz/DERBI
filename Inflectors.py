@@ -211,15 +211,15 @@ class AUXInflector(BasicInflector):
 # DET
 class DETInflector(BasicInflector):
 
-    def parse_poss_dets(self, token: spacy.tokens.token.Token) -> str:
+    def parse_poss_dets(self, token: str) -> str:
         # 'euer' is distinct, as it has a prothetical vowel
         euer_pattern = re.compile('eue{0,1}r')
         poss_pattern = re.compile('[dms]ein|unser|ihr')
 
-        if euer_pattern.search(token.text.lower()) is not None:
+        if euer_pattern.search(token) is not None:
             match = 'euer'
-        elif poss_pattern.search(token.text.lower()) is not None:
-            match = poss_pattern.search(token.text.lower())[0]
+        elif poss_pattern.search(token) is not None:
+            match = poss_pattern.search(token)[0]
         else:
             match = 'mein'
 
@@ -231,7 +231,7 @@ class DETInflector(BasicInflector):
             raise ValueError('Article "ein" has only Singular forms.')
         
         # detect possessive pronouns
-        input = token.lemma_.lower() if 'Poss=Yes' not in target_tags else self.parse_poss_dets(token)
+        input = token.lemma_.lower() if 'Poss=Yes' not in target_tags else self.parse_poss_dets(token.text.lower())
 
         output, remaining_tags = self.search_in_lexicon(input, target_tags)
         if not(len(remaining_tags)):
