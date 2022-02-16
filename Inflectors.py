@@ -391,7 +391,9 @@ class VERBInflector(AUXInflector):
         if target_tags == 'Verbform=Inf':
             return token.lemma_
         
+        part = False
         if target_tags == 'Verbform=Part':
+            part = True
             target_tags = 'Tense=Past|Verbform=Part'
         
         # separate prefixes
@@ -399,8 +401,6 @@ class VERBInflector(AUXInflector):
 
         # NB! in lexicon we search only non-prefix part
         output, remaining_tags = self.search_in_lexicon(stem, target_tags)
-        if not(len(remaining_tags)):
-            return output
 
         output = self.automata(output, remaining_tags)
         # remove # for -ieren
@@ -410,7 +410,7 @@ class VERBInflector(AUXInflector):
         # restore prefixes:
             # separable prefixes and inseparable in participles are joint at the beginning
             # else the prefix is separated 
-        output = self.add_prefixes(prefixes, insep, output, 'Verbform=Part' in target_tags)
+        output = self.add_prefixes(prefixes, insep, output, part)
 
         # use ADJInflector for participles,
         # as they inflect the same way
