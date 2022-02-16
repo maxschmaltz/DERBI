@@ -61,6 +61,12 @@ class DERBI:
         if target_tags == '':
             warnings.warn('No tags for word "' + token.norm_ + '" were provided; it will not be inflected.', Warning)
             return token.norm_
+        # spaCy considers VERB Verbform=Part as ADJ, so we will catch it and redirect
+        if (token.pos_ == 'ADJ') and (self.model(token.lemma_)[0].pos_ == 'VERB'):
+            if re.search('nd(e[mnrs]{0,1}){0,1}$', token.text.lower()) if not None:
+                return self.verb_inflector(self.model(token.lemma_), re.sub('Degree=\w+\|', '', target_tags) + 'Tense=Pres|Verbform=Part')
+            else:
+                return self.verb_inflector(self.model(token.lemma_), re.sub('Degree=\w+\|', '', target_tags) + 'Tense=Past|Verbform=Part')
         # define needed inflector and inflect
         inflector = getattr(self, token.pos_.lower() + '_inflector')
         return inflector(token, target_tags)
