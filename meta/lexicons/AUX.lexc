@@ -2,7 +2,6 @@ dürfen+Mood=Ind|Number=Sing|Person=2|Tense=Pres|Verbform=Fin->darfst
 dürfen+Mood=Ind|Number=Sing|Person=[1,3]|Tense=Pres|Verbform=Fin->darf
 dürfen+Tense=Past|Verbform=Fin->durftE&
 dürfen+Tense=Past|Verbform=Part->#durft
-haben+Mood=Ind|Number=Sing|Person=1|Tense=Pres|Verbform=Fin->habE
 haben+Mood=Ind|Number=Sing|Person=2|Tense=Pres|Verbform=Fin->hast
 haben+Mood=Ind|Number=Sing|Person=3|Tense=Pres|Verbform=Fin->hat
 haben+Tense=Past|Verbform=Fin->hattE&
