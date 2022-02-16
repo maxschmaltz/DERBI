@@ -1,13 +1,13 @@
 ## NB!!! Here we have only verbs with separated prefix
-		
+				
 		# Separate The Flexion
 
 (en|(?<=[lr])n)$+Verbform=[^Inf]->
 
 		# Prothetical E Marker
 			
-(?<=[dt])$+->E
-(?<=[dt]&)$+->E
+(?<=[dt])$+Verbform=[^Inf]->E
+(?<=[dt]&)$+Verbform=[^Inf]->E
 
 		# Finite Forms
 
