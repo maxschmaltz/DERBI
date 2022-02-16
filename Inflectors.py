@@ -194,6 +194,9 @@ class AUXInflector(BasicInflector):
             
         if token.lemma_ == 'habe':
             token.lemma_ = 'haben'
+            
+        if 'Verbform=Part' in target_tags:
+            target_tags = re.sub('Verbform=Part', 'Tense=Past|Verbform=Part', target_tags)      
 
         output, remaining_tags = self.search_in_lexicon(token.lemma_.lower(), target_tags)
         if not(len(remaining_tags)):
@@ -206,7 +209,7 @@ class AUXInflector(BasicInflector):
         # use ADJInflector for participles,
         # as they inflect the same way
         if 'Verbform=Part' in target_tags:
-            return self.adj_inflector(output, target_tags + '|Degree=Pos')
+            return self.adj_inflector(output, re.sub('Tense=Past\|', '', target_tags) + '|Degree=Pos')
         
         return output
 
@@ -370,7 +373,7 @@ class VERBInflector(AUXInflector):
         # separable prefixes are joint at the beginning anyways
         if insep:
             return prefixes + re.sub('#', '', token)
-        # inseparable prefixes are separated in finite and imperative forms
+        # separable prefixes are separated in finite and imperative forms
         if separate:
             return '(' + token + ' , ' + prefixes + ') '
         # inseparable prefixes are joint in participles
@@ -410,6 +413,6 @@ class VERBInflector(AUXInflector):
         # use ADJInflector for participles,
         # as they inflect the same way
         if 'Verbform=Part' in target_tags:
-            return self.adj_inflector(output, target_tags + '|Degree=Pos')
+            return self.adj_inflector(output, re.sub('Tense=Past\|', '', target_tags) + '|Degree=Pos')
         
         return output
