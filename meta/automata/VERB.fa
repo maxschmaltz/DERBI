@@ -80,7 +80,7 @@ K1+->e
 
 			# Sub2 Marker for Strong Verbs
 			
-&+Mood=Sub->&e
+(?<!e)&+Mood=Sub->&e
 
 			# Prothetical E Marker
 			
