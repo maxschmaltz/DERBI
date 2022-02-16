@@ -285,7 +285,7 @@ class PRONInflector(BasicInflector):
         # as every reflexive pronoun has tag 'Reflex=Yes' and PronType=Prs;
         # we need only Reflex=Yes
         if 'Reflex=Yes' in target_tags:
-            target_tags = target_tags.replace('PronType=Prs|', '')
+            target_tags = target_tags.replace('Prontype=Prs|', '')
 
         # assert lemma 'ich' for personal pronouns
         # (for some reason lemmas for them vary)
