@@ -93,9 +93,9 @@ E+->e
 eren$+->ern
 elen$+->eln
 
-chnt$+Tense=Past|Verbform=Fin->chnet
-fnt$+Tense=Past|Verbform=Fin->fnet
-tmt$+Tense=Past|Verbform=Fin->tmet
+chnt$+Tense=Past|Verbform=Part->chnet
+fnt$+Tense=Past|Verbform=Part->fnet
+tmt$+Tense=Past|Verbform=Part->tmet
 			
 			# Ind Pres 2 Sing Marker
 			
