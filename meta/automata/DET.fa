@@ -24,3 +24,7 @@ $+Case=[Acc,Nom]|Gender=*|Number=Plur|Poss=Yes|Prontype=Prs->e
 $+Case=[Acc,Nom]|Gender=Fem|Number=Sing|Poss=Yes|Prontype=Prs->e
 $+Case=[Acc,Nom]|Gender=Neut|Number=Sing|Poss=Yes|Prontype=Prs->
 $+Case=[Dat,Gen]|Gender=Fem|Number=Sing|Poss=Yes|Prontype=Prs->er
+
+	# Remove excess -e$ (that can happen because of spaCy lemmatization)
+	
+ee$+->e
