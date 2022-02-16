@@ -15,11 +15,11 @@
 			
 				# Sub Pres Marker
 			
-$+Mood=Sub|Tense=Pres|Verbform=Fin->K1
+$+Mood=Sub|Tense=Pres|Verbform=Fin->E
 
 			# Past: Ind and Sub Past
 		
-(?<!&)$+Tense=Past|Verbform=Fin->te
+(?<!&)$+Tense=Past|Verbform=Fin->tE
 
 			# Conjugation
 
@@ -75,17 +75,11 @@ $+Tense=Past|Verbform=Part->t
 		
 			# Sub Past Marker for Strong Verbs
 			
-(?<!e)&+Mood=Sub->&K1
-e&+Mood=Sub->K1&
+(?<!e)&+Mood=Sub->&E
 &+Mood=[^Sub]->
 		
-			# Sub Pres Marker
+			# Sub Pres Marker, Prothetical E Marker
 		
-K1(?=e)+->
-K1+->e
-
-			# Prothetical E Marker
-			
 E(?=e)+->
 E+->e
 			
