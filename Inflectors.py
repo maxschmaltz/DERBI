@@ -367,17 +367,17 @@ class VERBInflector(AUXInflector):
         return prefs, insep, re.sub('^' + prefs, '', token)
 
     # restore separated prefixes
-    def add_prefixes(self, prefixes: str, insep: bool, token: str, separate: bool) -> str:
+    def add_prefixes(self, prefixes: str, insep: bool, token: str, part: bool) -> str:
         if not len(prefixes):
             return re.sub('#', 'ge', token)
         # separable prefixes are joint at the beginning anyways
         if insep:
             return prefixes + re.sub('#', '', token)
-        # separable prefixes are separated in finite and imperative forms
-        if separate:
-            return '(' + token + ' , ' + prefixes + ') '
         # inseparable prefixes are joint in participles
-        return prefixes + re.sub('#', 'ge', token)
+        if part:
+            return prefixes + re.sub('#', 'ge', token)
+        # separable prefixes are separated in finite and imperative forms
+        return '(' + token + ' , ' + prefixes + ') '
 
     def __call__(self, token: spacy.tokens.token.Token, target_tags: str) -> str:
         # restrict imperative forms formation for modal verbs
@@ -408,7 +408,7 @@ class VERBInflector(AUXInflector):
         # restore prefixes:
             # separable prefixes and inseparable in participles are joint at the beginning
             # else the prefix is separated 
-        output = self.add_prefixes(prefixes, insep, output, 'Verbform=Part' not in target_tags)
+        output = self.add_prefixes(prefixes, insep, output, 'Verbform=Part' in target_tags)
 
         # use ADJInflector for participles,
         # as they inflect the same way
