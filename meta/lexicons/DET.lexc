@@ -11,6 +11,16 @@ der+Case=[Acc,Nom]|Definite=Def|Gender=*|Number=Plur|Prontype=Art->die
 der+Case=[Acc,Nom]|Definite=Def|Gender=Fem|Number=Sing|Prontype=Art->die
 der+Case=[Acc,Nom]|Definite=Def|Gender=Neut|Number=Sing|Prontype=Art->das
 der+Case=[Dat,Gen]|Definite=Def|Gender=Fem|Number=Sing|Prontype=Art->der
+derselbe+Case=Acc|Gender=Masc|Number=Sing|Prontype=Dem->denselben
+derselbe+Case=Dat|Gender=*|Number=Plur|Prontype=Dem->denselben
+derselbe+Case=Dat|Gender=[Masc,Neut]|Number=Sing|Prontype=Dem->demselben
+derselbe+Case=Gen|Gender=*|Number=Plur|Prontype=Dem->derselben
+derselbe+Case=Gen|Gender=[Masc,Neut]|Number=Sing|Prontype=Dem->desselben
+derselbe+Case=Nom|Gender=Masc|Number=Sing|Prontype=Dem->derselbe
+derselbe+Case=[Acc,Nom]|Gender=*|Number=Plur|Prontype=Dem->dieselben
+derselbe+Case=[Acc,Nom]|Gender=Fem|Number=Sing|Prontype=Dem->dieselbe
+derselbe+Case=[Acc,Nom]|Gender=Neut|Number=Sing|Prontype=Dem->dasselbe
+derselbe+Case=[Dat,Gen]|Gender=Fem|Number=Sing|Prontype=Dem->derselben
 ein+Case=Acc|Definite=Ind|Gender=Masc|Number=Sing|Prontype=Art->einen
 ein+Case=Dat|Definite=Ind|Gender=[Masc,Neut]|Number=Sing|Prontype=Art->einem
 ein+Case=Gen|Definite=Ind|Gender=[Masc,Neut]|Number=Sing|Prontype=Art->eines
