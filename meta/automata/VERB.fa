@@ -73,7 +73,7 @@ er$+Tense=Pres|Verbform=Part->rend
 
 			# Past
 
-^(?!\w+iert$)+Tense=Past|Verbform=Part->#
+^+Tense=Past|Verbform=Part->#
 
 $+Tense=Past|Verbform=Part->t
 
