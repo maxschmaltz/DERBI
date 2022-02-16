@@ -403,6 +403,8 @@ class VERBInflector(AUXInflector):
             return output
 
         output = self.automata(output, remaining_tags)
+        # remove # for -ieren
+        output = re.sub('#(?=\w+iert$)', '', output)
         # toss an umlaut if applicable
         output = self.umlaut(output)
         # restore prefixes:
