@@ -21,6 +21,12 @@
 		
 (?<!&)$+Tense=Past|Verbform=Fin->tE
 
+chntE$+Tense=Past|Verbform=Fin->chnetE
+fntE$+Tense=Past|Verbform=Fin->fnetE
+tmtE$+Tense=Past|Verbform=Fin->tmetE
+eltE$+Tense=Past|Verbform=Fin->letE
+ertE$+Tense=Past|Verbform=Fin->retE
+
 			# Conjugation
 
 $+Mood=[Ind,Sub]|Number=Sing|Person=1|Tense=Pres|Verbform=Fin->e
