@@ -11,13 +11,13 @@
 
 		# Finite Forms
 
-			# Pres: Ind and Sub1
+			# Pres: Ind and Sub Pres
 			
 				# Sub1 Marker
 			
 $+Mood=Sub|Tense=Pres|Verbform=Fin->K1
 
-			# Past: Ind and Sub
+			# Past: Ind and Sub Past
 		
 (?<!&)$+Tense=Past|Verbform=Fin->te
 
