@@ -132,7 +132,7 @@ class ADJInflector(BasicInflector):
             # somehow for ADV spacy add 'e'/'en'/... to lemma in some forms,
             # e.g. 'rote'.lemma_ = 'rote' but 'roten'.lemma_ = 'rot' 
             if (token.pos_ == 'ADJ') and (token.text.lower() == token.lemma_) and (len(Tools.split_tags(target_tags)) > 1):
-                token.lemma_ = re.sub('e[mnr]{0,1}$', '', token.lemma_)
+                token.lemma_ = re.sub('e[mnrs]{0,1}$', '', token.lemma_)
 
             output, remaining_tags = self.search_in_lexicon(token.lemma_.lower(), target_tags)
             if not(len(remaining_tags)):
