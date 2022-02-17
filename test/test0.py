@@ -9,9 +9,9 @@ subprocess.check_call([sys.executable, '-m', 'spacy', 'download', 'de_core_news_
 subprocess.check_call([sys.executable, '-m', 'spacy', 'download', 'de_core_news_sm'])
 subprocess.check_call([sys.executable, '-m', 'spacy', 'download', 'de_core_news_md'])
 
+import spacy
 # we will evaluate DERBI 
 # based on the following pipelines:
-import spacy
 nlp_lg = spacy.load('de_core_news_lg')
 nlp_sm = spacy.load('de_core_news_sm')
 nlp_md = spacy.load('de_core_news_md')
