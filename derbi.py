@@ -120,5 +120,5 @@ class DERBI:
                 data['result'] = self.inflect(data['token'], data['target_tags'])
         # assemble the result
         self.result_text = ' '.join([word.text if self.to_inflect.get(str(i)) is None else self.to_inflect[str(i)]['result'] 
-                                                                                        for i, word in enumerate(self.doc)])
+                                                                                for i, word in enumerate(self.doc)]).lower()
         return self.result_text
