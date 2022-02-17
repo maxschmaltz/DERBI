@@ -1,13 +1,13 @@
 import subprocess
 import sys
-# pip install GitPython
-subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'GitPython'])
-# pip install -U spacy
-subprocess.check_call([sys.executable, '-m', 'pip', 'install', '-U', 'spacy'])
-# installing pipelines
-subprocess.check_call([sys.executable, '-m', 'spacy', 'download', 'de_core_news_lg'])
-subprocess.check_call([sys.executable, '-m', 'spacy', 'download', 'de_core_news_sm'])
-subprocess.check_call([sys.executable, '-m', 'spacy', 'download', 'de_core_news_md'])
+# # pip install GitPython
+# subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'GitPython'])
+# # pip install -U spacy
+# subprocess.check_call([sys.executable, '-m', 'pip', 'install', '-U', 'spacy'])
+# # installing pipelines
+# subprocess.check_call([sys.executable, '-m', 'spacy', 'download', 'de_core_news_lg'])
+# subprocess.check_call([sys.executable, '-m', 'spacy', 'download', 'de_core_news_sm'])
+# subprocess.check_call([sys.executable, '-m', 'spacy', 'download', 'de_core_news_md'])
 
 import spacy
 # we will evaluate DERBI 
