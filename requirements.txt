@@ -1,0 +1,4 @@
+GitPython
+numpy
+spacy
+tqdm
