@@ -86,7 +86,7 @@ class DERBI:
         inflector = getattr(self, token.pos_.lower() + '_inflector')
         return inflector(token, target_tags)
 
-    def __call__(self, text: str, target_tags: dict or list[dict]=None, indices: int or list[int]=None) -> str:
+    def __call__(self, text: str, target_tags: dict or list[dict]=None, indices: int or list[int]=0) -> str:
         # check if the target tagsets and indices of to-be-inflected tokens were provided
         if isinstance(target_tags, dict):
 #             if not len(target_tags):
@@ -98,8 +98,6 @@ class DERBI:
         # if no indices were provided, set default as 0
         if isinstance(indices, int):
             indices = [indices]
-        elif indices is None:
-            indices = [0]
         # check the correspondance of the tagsets and the indices
         if len(target_tags) != len(indices):
             raise ValueError('Number of indices and number of target tagsets must not differ.')
