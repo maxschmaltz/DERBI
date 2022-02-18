@@ -23,7 +23,7 @@ DERBI (DEutscher RegelBasierter Inflektor) is a simple rule-based automatic infl
 1. DERBI gets an input text;
 2. The text is processes with the given spaCy model;
 3. For each word to be inflected in the text:
-   - The features predicted by spaCy are overriden with the input features (where specified);
+   - The features predicted by spaCy are overridden with the input features (where specified);
    - The words with the result features come through the rules and get inflected;
 4. The result is assembled into the output. 
 
