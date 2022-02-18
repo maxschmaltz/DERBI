@@ -27,7 +27,7 @@ DERBI (DEutscher RegelBasierter Inflektor) is a simple rule-based automatic infl
    - The words with the result features come through the rules and get inflected;
 4. The result is assembled into the output. 
 
-For the arguments, see [below]((https://github.com/maxschmaltz/DERBI/blob/main/README.md#arguments)). 
+For the arguments, see [below](https://github.com/maxschmaltz/DERBI/blob/main/README.md#arguments). 
 
 ## Installation
 
