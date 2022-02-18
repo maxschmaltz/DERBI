@@ -127,8 +127,10 @@ NB! DERBI accepts capitalized tags. For example, use **Prontype**, not **PronTyp
 
 ## Performance
 
-#### Disclaimer
+### Disclaimer
 For evaluation we used [Universal Dependencies](https://universaldependencies.org) [German Treebanks](https://universaldependencies.org/de/index.html). Unfortunately, there are only `.conllu` in their GitHub repositories so we had to [download](https://universaldependencies.org/#download) some of `.txt` datasets and add it to our repository. We do not distribute these datasets though; it is your responsibility to determine whether you have permission to use them.
+
+### Evaluation
 
 Evaluation conducted with dataset 'de_lit-ud-test.txt' from Universal Dependencies [German LIT threebank](https://universaldependencies.org/treebanks/de_lit/index.html) (≈31k tokens), accuracy:
 
