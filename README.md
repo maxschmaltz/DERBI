@@ -5,20 +5,20 @@ DERBI (DEutscher RegelBasierter Inflektor) is a simple rule-based automatic infl
 
 ---
 
-### Table of contents
-* How it works
-* Installation
-* Simple Usage
-  * Example
-  * Arguments
-  * Output
-* Tags
-* Performance
-* License
+### Table of Contents
+* [How It Works](https://github.com/maxschmaltz/DERBI/edit/main/README.md#how-it-works)
+* [Installation](https://github.com/maxschmaltz/DERBI/edit/main/README.md#installation)
+* [Simple Usage](https://github.com/maxschmaltz/DERBI/edit/main/README.md#simple-usage)
+  * [Example](https://github.com/maxschmaltz/DERBI/blob/main/README.md#example)
+  * [Arguments](https://github.com/maxschmaltz/DERBI/blob/main/README.md#arguments)
+  * [Output](https://github.com/maxschmaltz/DERBI/blob/main/README.md#output)
+* [Tags](https://github.com/maxschmaltz/DERBI/blob/main/README.md#tags)
+* [Performance](https://github.com/maxschmaltz/DERBI/blob/main/README.md#performance)
+* [License](https://github.com/maxschmaltz/DERBI/blob/main/README.md#license)
 
 ---
 
-## How it works
+## How It Works
 
 1. DERBI gets an input text;
 2. The text is processes with the given spaCy model;
