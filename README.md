@@ -107,7 +107,7 @@ The following category-feature values can be used in `target-tags`:
 | **Category** (explanation) | **Valid Features** (explanation) | In Universal Features |
 | :--- | :--- | :---: |
 | **Case** | **Acc** (Accusative) <br> **Dat** (Dative) <br> **Gen** (Genitive) <br> **Nom** (Nominative) | **Yes** |
-| **Declination** (Applicable for the words <br> with the adjective declination. <br> In German such words are declinated <br> differently depending on the left context.) | **Mixed** <br> **Strong** <br> **Weak** | **No** |
+| **Declination** (Applicable for the words <br> with the adjective declination. <br> In German such words are declinated <br> differently depending on the left context) | **Mixed** <br> **Strong** <br> **Weak** | **No** |
 | **Definite** (Definiteness) | **Def** (Definite) <br> **Ind** (Definite) | **Yes** |
 | **Degree** (Degree of comparison) | **Cmp** (Comparative) <br> **Pos** (Positive) <br> **Sup** (Superlative) | **Yes** |
 | **Foreign** (Whether the word is foreign. <br> Applies to POS **X**) | **Yes** | **Yes** |
