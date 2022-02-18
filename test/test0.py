@@ -35,7 +35,7 @@ from collections import defaultdict
 
 '''
 For evaluation we use 'de_lit-ud-test.txt' from 
-Universal Dependencies German HDT threebank: 
+Universal Dependencies German LIT threebank: 
 https://universaldependencies.org/treebanks/de_lit/index.html.
 Unfortunately, we cannot download it from UD GitHub, as there are
 only threebanks in .conllu format (we need .txt).
