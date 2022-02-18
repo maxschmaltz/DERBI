@@ -96,7 +96,7 @@ derbi(
 > NB! The indices order must correspond to the target tags order. Note also, that the input text is lemmatized with the given spaCy model tokenizer, so the indices will be indexing a _spacy.tokens.Doc_ instance.
 
 ### Output
-Returns _str_: the input text, where the specified words are replaced with inflection results. The output is normalized.
+Returns _str_: the input text, where the specified words are replaced with the inflection results. The output is normalized.
 
 ## Tags
 
