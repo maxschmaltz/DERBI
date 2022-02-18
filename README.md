@@ -132,7 +132,7 @@ For evaluation we used [Universal Dependencies](https://universaldependencies.or
 
 ### Evaluation
 
-Evaluation conducted with dataset 'de_lit-ud-test.txt' from Universal Dependencies [German LIT threebank](https://universaldependencies.org/treebanks/de_lit/index.html) (≈31k tokens), accuracy:
+Evaluation conducted with dataset `de_lit-ud-test.txt` from Universal Dependencies [German LIT threebank](https://universaldependencies.org/treebanks/de_lit/index.html) (≈31k tokens), accuracy:
 
 | | de_core_news_md | de_core_news_sm| de_core_news_lg |
 | :--- | :---: | :---: | :---: |
