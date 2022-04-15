@@ -59,7 +59,7 @@ from DERBI.derbi import DERBI
 derbi = DERBI(nlp)
 
 derbi(
-    'DERBI sein machen, damit es all Entwickler ein Mögligkeit geben, jedes deutsche Wort automatisch zu beugen',
+    'DERBI sein machen, damit es all Entwickler ein Möglichkeit geben, jedes deutsche Wort automatisch zu beugen',
     [{'Number': 'Sing', 'Person': '3', 'Verbform': 'Fin'},     # sein -> ist
      {'Verbform': 'Part'},                                     # machen -> gemacht
      {'Case': 'Dat', 'Number': 'Plur'},                        # all -> allen
@@ -73,7 +73,7 @@ derbi(
 )
 
 # Output:
-'derbi ist gemacht , damit es allen entwicklern eine mögligkeit gibt , jede deutschen wörter automatisch zu beugen'
+'derbi ist gemacht , damit es allen entwicklern eine möglichkeit gibt , jede deutschen wörter automatisch zu beugen'
 ```
 
 ### Arguments
