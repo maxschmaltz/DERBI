@@ -1,3 +1,3 @@
 # DERBI: DEutscher RegelBasierter Inflektor
 
-author_email = 'ichbinschmaltz@yandex.ru'
+author_email = 'schmaltzmax@gmail.com'
