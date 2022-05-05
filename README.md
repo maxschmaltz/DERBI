@@ -8,6 +8,8 @@ DERBI (DEutscher RegelBasierter Inflektor) is a simple rule-based automatic infl
 ### Table of Contents
 * [How It Works](https://github.com/maxschmaltz/DERBI/edit/main/README.md#how-it-works)
 * [Installation](https://github.com/maxschmaltz/DERBI/edit/main/README.md#installation)
+  * [Via Pip]()
+  * [Via GitHub]()
 * [Simple Usage](https://github.com/maxschmaltz/DERBI/edit/main/README.md#simple-usage)
   * [Example](https://github.com/maxschmaltz/DERBI/blob/main/README.md#example)
   * [Arguments](https://github.com/maxschmaltz/DERBI/blob/main/README.md#arguments)
