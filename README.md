@@ -31,6 +31,13 @@ For the arguments, see [below](https://github.com/maxschmaltz/DERBI/blob/main/RE
 
 ## Installation
 
+### Via pip
+```
+pip install DERBI
+```
+
+### Via GitHub
+
 Install all necessary packages:
 ```python
 pip install -r requirements.txt
@@ -44,7 +51,6 @@ or
 from git import Repo
 Repo.clone_from('https://github.com/maxschmaltz/DERBI', 'DERBI')
 ```
-Installation via `pip install` is not available yet. Keep an eye on the updates!
 
 ## Simple Usage
 Note that DERBI works with [spaCy](https://spacy.io). Make sure to have installed any of the [spaCy pipelines for German](https://spacy.io/models/de).
