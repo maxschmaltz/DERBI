@@ -9,6 +9,11 @@ der+Case=Nom|Gender=Masc|Number=Sing|Prontype=[Dem,Rel]->der
 der+Case=[Acc,Nom]|Gender=*|Number=Plur|Prontype=[Dem,Rel]->die
 der+Case=[Acc,Nom]|Gender=Fem|Number=Sing|Prontype=[Dem,Rel]->die
 der+Case=[Acc,Nom]|Gender=Neut|Number=Sing|Prontype=[Dem,Rel]->das
+dieser+Case=Acc|Definite=Def|Gender=Masc|Number=Sing|Prontype=Dem->diesen
+dieser+Case=Dat|Definite=Def|Gender=*|Number=Plur|Prontype=Dem->diesen
+dieser+Case=Dat|Definite=Def|Gender=[Masc,Neut]|Number=Sing|Prontype=Dem->diesem
+dieser+Case=Gen|Definite=Def|Gender=*|Number=Plur|Prontype=Dem->dieser
+dieser+Case=Gen|Definite=Def|Gender=[Masc,Neut]|Number=Sing|Prontype=Dem->dieses
 derjenige+Case=Acc|Gender=Masc|Number=Sing|Prontype=Dem->denjenigen
 derjenige+Case=Dat|Gender=*|Number=Plur|Prontype=Dem->denjenigen
 derjenige+Case=Dat|Gender=[Masc,Neut]|Number=Sing|Prontype=Dem->demjenigen

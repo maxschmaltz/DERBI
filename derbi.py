@@ -20,10 +20,11 @@ import warnings
 # import spaCy
 import spacy
 # import required scripts
-from DERBI import Tools, Inflectors
+# from DERBI import Tools, Inflectors
+import Tools, Inflectors
 # Router contains information about 
 # __init__ of each pos inflector
-with open('DERBI/Router.json') as r:
+with open('./Router.json') as r:
     Router = json.load(r)
 
     
@@ -85,8 +86,41 @@ class DERBI:
         # define needed inflector and inflect
         inflector = getattr(self, token.pos_.lower() + '_inflector')
         return inflector(token, target_tags)
+    
+    @classmethod
+    def mask(cls, text):
+        mapping = lambda char: 'u' if char.isupper() else 'l'
+        mask = [mapping(char) for char in text]
+        mask = ''.join(mask)
+        return mask
+    
 
-    def __call__(self, text: str, target_tags: dict or list[dict]=None, indices: int or list[int]=0) -> str:
+    @classmethod
+    def remask(cls, text, mask):
+        result = ''
+        for i, char in enumerate(text):
+            if i >= len(mask): result += char
+            else: result += char.upper() if mask[i] == 'u' else char.lower()
+        return result
+    
+
+    @classmethod
+    def get_delimitors(cls, text, tokens):
+        text_ = '' + text
+        delimitors = []
+        masks = []
+        for i in range(len(tokens) - 1):
+            pre = tokens[i]
+            post = tokens[i + 1]
+            text_ = re.sub(pre, '', text_, count=1)
+            delimitor = re.findall(f'.*?(?={post})', text_)[0]
+            delimitors.append(delimitor)
+            text_ = re.sub(delimitor, '', text_, count=1)
+            masks.append(cls.mask(pre))
+        delimitors.append('')
+        return delimitors, masks
+
+    def __call__(self, text: str, target_tags: dict or list=None, indices: int or list=0) -> str:
         # check if the target tagsets and indices of to-be-inflected tokens were provided
         if isinstance(target_tags, dict):
 #             if not len(target_tags):
@@ -104,6 +138,8 @@ class DERBI:
 
         # process the input text with the given spaCy model
         self.doc = self.model(text)
+        delimitors, masks = self.get_delimitors(text, [token.text for token in self.doc])
+
         self.to_inflect = {
             str(ind): {
             'token': self.doc[ind],
@@ -117,6 +153,19 @@ class DERBI:
             else:
                 data['result'] = self.inflect(data['token'], data['target_tags'])
         # assemble the result
-        self.result_text = ' '.join([word.text if self.to_inflect.get(str(i)) is None else self.to_inflect[str(i)]['result'] 
-                                                                                for i, word in enumerate(self.doc)]).lower()
-        return self.result_text
+        result = ''
+        # self.result_text = ' '.join(
+        #     [word.text if self.to_inflect.get(str(i)) is None 
+        #      else self.to_inflect[str(i)]['result']
+        #      for i, word in enumerate(self.doc)
+        #     ])#.lower()
+        for i, word in enumerate(self.doc):
+            if self.to_inflect.get(str(i)) is None:
+                result += word.text
+            else:
+                inflected = self.to_inflect[str(i)]['result']
+                mask = masks[i]
+                remasked = self.remask(inflected, mask)
+                result += remasked
+            result += delimitors[i]
+        return result

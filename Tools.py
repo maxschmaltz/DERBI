@@ -23,10 +23,10 @@ import warnings
 import spacy
 
 # obtain required json data
-with open('DERBI/meta/LabelsScheme.json') as json_file:
+with open('./meta/LabelsScheme.json') as json_file:
     LabelsScheme = json.load(json_file)
     
-with open('DERBI/meta/ValidFeatures.json') as json_file:
+with open('./meta/ValidFeatures.json') as json_file:
     ValidFeatures = json.load(json_file)
 
 # json data links
@@ -89,7 +89,8 @@ class TagsSearcher:
         res_tags = merge_tags({cat: (ValidFeatures[cat][0] if morph_tags.get(cat) is None 
                                      else morph_tags[cat]) for cat, feat in split_tags(extract_min(matches)).items()})
         warnings.warn('Provided tags were not found in labels scheme. Some features were set as default.\nResult features are "' +
-                      res_tags + '". You can specify desired features if you wish.\nLabels scheme is available at: ' + labels_scheme_link + '.', Warning)
+                      res_tags + '". You can specify desired features if you wish.\nLabels scheme is available at: ' 
+                      + labels_scheme_link + '.', Warning)
         return res_tags
 
     
@@ -99,23 +100,26 @@ class TagsProcessor:
 
     def __init__(self):
         self.Searcher = TagsSearcher()
+        self.filter = {
+            'ADV': ['Prontype'],
+            'AUX': ['Verbform'],
+            'DET': ['Definite', 'Prontype', 'Poss'],
+            'NOUN': ['Gender'],
+            'PRON': ['Prontype', 'Poss'],
+            'PROPN': ['Gender'],
+            'SCONJ': ['Prontype'],
+            'VERB': ['Verbform'],
+            'X': ['Foreign']
+        }
 
     # we want all the tags to be normalized for us not to depend on the case
-    def normalize_tags(self, tags: dict) -> dict:
+    @staticmethod
+    def normalize_tags(tags: dict) -> dict:
         return {key.capitalize().strip(): value.capitalize().strip() for key, value in tags.items()}
 
     # not all the categories can be alternated
     def filter_target_tags(self, tagset: dict, tok: spacy.tokens.token.Token):
         pos = tok.pos_
-        self.filter = {
-            'ADV': ['PronType'],
-            'DET': ['Definite', 'Prontype', 'Poss'],
-            'NOUN': ['Gender'],
-            'PRON': ['PronType', 'Poss'],
-            'PROPN': ['Gender'],
-            'SCONJ': ['Prontype'],
-            'X': ['Foreign']
-        }
         # let NOUNs with adjective declination pass           
         if (pos == 'NOUN') and (tagset.get('Declination') is not None):
             return
