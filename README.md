@@ -33,25 +33,25 @@ For the arguments, see [below](https://github.com/maxschmaltz/DERBI/blob/main/RE
 
 ## Installation
 
-### Via pip
+### Via pip (deprecated)
 ```
 pip install DERBI
 ```
 
 ### Via git clone
 
-Install all necessary packages:
-```python
-pip install -r requirements.txt
-```
 Clone DERBI:
 ```python
 git clone https://github.com/maxschmaltz/DERBI
 ```
-or
+Install all necessary packages:
 ```python
-from git import Repo
-Repo.clone_from('https://github.com/maxschmaltz/DERBI', 'DERBI')
+pip install -r requirements.txt
+```
+
+Finally, run the setup script:
+```python
+pip install .
 ```
 
 ## Simple Usage
