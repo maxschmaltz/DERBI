@@ -1,0 +1,103 @@
+## NB!!! Here we have only verbs with separated prefix
+				
+		# Separate The Flexion
+
+(en|(?<=[lr])n)$+Verbform=[^Inf]->
+
+		# Prothetical E Marker
+			
+(?<=[dt])$+Verbform=[^Inf]->E
+(?<=[dt]&)$+Verbform=[^Inf]->E
+
+		# Finite Forms
+
+			# Pres: Ind and Sub Pres
+			
+				# Sub Pres Marker
+			
+(?<!E)$+Mood=Sub|Tense=Pres|Verbform=Fin->E
+
+			# Past: Ind and Sub Past
+		
+(?<!&)$+Tense=Past|Verbform=Fin->tE
+
+chntE$+Tense=Past|Verbform=Fin->chnetE
+fntE$+Tense=Past|Verbform=Fin->fnetE
+tmtE$+Tense=Past|Verbform=Fin->tmetE
+eltE$+Tense=Past|Verbform=Fin->letE
+ertE$+Tense=Past|Verbform=Fin->retE
+
+			# Conjugation
+
+$+Mood=[Ind,Sub]|Number=Sing|Person=1|Tense=Pres|Verbform=Fin->e
+$+Mood=[Ind,Sub]|Number=Sing|Person=[1,3]|Tense=Past|Verbform=Fin->
+$+Mood=[Ind,Sub]|Number=Sing|Person=2|Tense=[Past,Pres]|Verbform=Fin->St
+$+Mood=Ind|Number=Sing|Person=3|Tense=Pres|Verbform=Fin->t
+$+Mood=[Ind,Sub]|Number=Plur|Person=[1,3]|Tense=[Past,Pres]|Verbform=Fin->en
+$+Mood=[Ind,Sub]|Number=Plur|Person=2|Tense=[Past,Pres]|Verbform=Fin->t
+
+				# Past Forms for Strong Verbs (we have only stems after lexicon)
+
+(?<=&)$+Mood=[Ind,Sub]|Number=Sing|Person=[1,3]->
+(?<=&)$+Mood=[Ind,Sub]|Number=Sing|Person=2->St
+(?<=&)$+Mood=[Ind,Sub]|Number=Plur|Person=[1,3]->en
+(?<=&)$+Mood=[Ind,Sub]|Number=Plur|Person=2->t
+
+
+		# Imperatives
+
+			# 2 Sing
+			
+(?<=chn)$+Mood=Imp|Number=Sing|Person=2->e
+(?<=(fn|tm))$+Mood=Imp|Number=Sing|Person=2->e
+el$+Mood=Imp|Number=Sing|Person=2->le
+er$+Mood=Imp|Number=Sing|Person=2->re
+
+$+Mood=Imp|Number=Plur|Person=2->
+
+			# 2 Plur
+			
+$+Mood=Imp|Number=Plur|Person=2->t
+
+			# 1, 3 Plur
+			
+$+Mood=Imp|Number=Plur|Person=[1,3]->en
+
+		# Participles
+		
+			# Pres
+		
+el$+Tense=Pres|Verbform=Part->lend
+er$+Tense=Pres|Verbform=Part->rend
+(?<!e[lr])$+Tense=Pres|Verbform=Part->end
+
+			# Past
+
+^+Tense=Past|Verbform=Part->#
+
+$+Tense=Past|Verbform=Part->t
+
+		# Restore Markers
+		
+			# Sub Past Marker for Strong Verbs
+			
+(?<![eE])&+Mood=Sub->&E
+[eE]&+Mood=Sub->&E
+&+Mood=[^Sub]->
+		
+			# Sub Pres Marker, Prothetical E Marker
+		
+E(?=e)+->
+E+->e
+
+eren$+->ern
+elen$+->eln
+
+chnt$+Tense=Past|Verbform=Part->chnet
+fnt$+Tense=Past|Verbform=Part->fnet
+tmt$+Tense=Past|Verbform=Part->tmet
+			
+			# Ind Pres 2 Sing Marker
+			
+(?<=[szß])S+->
+S+->s

@@ -1,0 +1,52 @@
+	# Markers
+	
+(?=[aeiouyäöüAEIOUYAÖÄÜ])+Degree=[^Pos]->#
+ 
+	# Prothetical Vowels
+	
+e(?=$)+Degree=[^Sup]->%
+
+(?<!^and)e(?=[rl]$)+Degree=Pos->E
+(?<!^and)e(?=[rl]$)+Degree=Cmp->
+
+(?<=[dtsßxz])$+Degree=Sup->e
+(?<=sch)$+Degree=Sup->e
+
+	# Regular Model
+		# Pos
+		
+$+Degree=Pos->
+
+		# Cmp
+	
+$+Degree=Cmp->er
+
+		# Sup
+		
+$+Degree=Sup->st
+
+		# Declination
+	
+$+Case=Acc|Declination=Weak|Gender=Neut|Number=Sing->e!
+$+Case=Dat|Declination=Strong|Gender=[Masc,Neut]|Number=Sing->em!
+$+Case=Gen|Declination=Strong|Gender=*|Number=Plur->er!
+$+Case=Nom|Declination=Weak|Gender=[Masc,Neut]|Number=Sing->e!
+$+Case=Nom|Declination=[Mixed,Strong]|Gender=Masc|Number=Sing->er!
+$+Case=[Acc,Nom]|Declination=*|Gender=Fem|Number=Sing->e!
+$+Case=[Acc,Nom]|Declination=Strong|Gender=*|Number=Plur->e!
+$+Case=[Acc,Nom]|Declination=[Mixed,Strong]|Gender=Neut|Number=Sing->es!
+$+Case=[Dat,Gen]|Declination=Strong|Gender=Fem|Number=Sing->er!
+
+(?<!!)$+Case=*|Declination=*|Gender=*|Number=*->en
+
+	# Restore Prothetical Vowels
+	
+E+Case=*|Declination=*|Degree=*|Gender=*|Number=*->
+E+->e
+
+	# Restore Markers
+	
+%+Case=*|Declination=*|Degree=[^Sup]|Gender=*|Number=*->
+%(?=$)+->e
+
+!+->

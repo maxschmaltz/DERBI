@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ************************************************************************
-
+import importlib.resources
 # import required modules
 import json
 import re
@@ -21,13 +21,14 @@ import warnings
 import spacy
 # import required scripts
 # from DERBI import Tools, Inflectors
-import Tools, Inflectors
-# Router contains information about 
+from DERBI import Tools, Inflectors
+from spacy.lang.de import German
+
+# Router contains information about
 # __init__ of each pos inflector
-with open('./Router.json') as r:
+with importlib.resources.files("DERBI").joinpath("Router.json").open() as r:
     Router = json.load(r)
 
-    
 # wrapper for inflection
 '''
 In fact, we do not have an unified inflector,
@@ -52,15 +53,17 @@ Wrapper performance consists of three stages:
         with the corresponding results in the input text.
         3.2. Return the result.
 '''
+
+
 class DERBI:
 
-    def __init__(self, model: spacy.lang.de.German):
+    def __init__(self, model: German):
         # as the model uses spaCy, we require one of the German spaCy models;
         # any is accepted
         if not isinstance(model, spacy.lang.de.German):
             raise TypeError('You should use one of the German spaCy pipelines: https://spacy.io/models/de')
         self.model = model
-        # with TagsProcessor we will process the input tags (surprisingly!) 
+        # with TagsProcessor we will process the input tags (surprisingly!)
         self.TagsProcessor = Tools.TagsProcessor()
         # create an instance of inflector for each POS
         for pos, args in Router.items():
@@ -80,29 +83,31 @@ class DERBI:
         # spaCy considers VERB Verbform=Part as ADJ, so we will catch it and redirect
         if (token.pos_ == 'ADJ') and (self.model(token.lemma_)[0].pos_ == 'VERB'):
             if re.search('nd(e[mnrs]{0,1}){0,1}$', token.text.lower()) is not None:
-                return self.verb_inflector(self.model(token.lemma_), re.sub('Degree=\w+\|', '', target_tags) + 'Tense=Pres|Verbform=Part')
+                return self.verb_inflector(self.model(token.lemma_),
+                                           re.sub('Degree=\w+\|', '', target_tags) + 'Tense=Pres|Verbform=Part')
             else:
-                return self.verb_inflector(self.model(token.lemma_), re.sub('Degree=\w+\|', '', target_tags) + 'Tense=Past|Verbform=Part')
+                return self.verb_inflector(self.model(token.lemma_),
+                                           re.sub('Degree=\w+\|', '', target_tags) + 'Tense=Past|Verbform=Part')
         # define needed inflector and inflect
         inflector = getattr(self, token.pos_.lower() + '_inflector')
         return inflector(token, target_tags)
-    
+
     @classmethod
     def mask(cls, text):
         mapping = lambda char: 'u' if char.isupper() else 'l'
         mask = [mapping(char) for char in text]
         mask = ''.join(mask)
         return mask
-    
 
     @classmethod
     def remask(cls, text, mask):
         result = ''
         for i, char in enumerate(text):
-            if i >= len(mask): result += char
-            else: result += char.upper() if mask[i] == 'u' else char.lower()
+            if i >= len(mask):
+                result += char
+            else:
+                result += char.upper() if mask[i] == 'u' else char.lower()
         return result
-    
 
     @classmethod
     def get_delimitors(cls, text, tokens):
@@ -120,11 +125,11 @@ class DERBI:
         delimitors.append('')
         return delimitors, masks
 
-    def __call__(self, text: str, target_tags: dict or list=None, indices: int or list=0) -> str:
+    def __call__(self, text: str, target_tags: dict or list = None, indices: int or list = 0) -> str:
         # check if the target tagsets and indices of to-be-inflected tokens were provided
         if isinstance(target_tags, dict):
-#             if not len(target_tags):
-#                 raise ValueError('At list one key-value pair required in target tags.')
+            #             if not len(target_tags):
+            #                 raise ValueError('At list one key-value pair required in target tags.')
             target_tags = [target_tags]
         if target_tags is None:
             warnings.warn('No tags were provided; none of the tokens will be inflected.', Warning)
@@ -142,8 +147,8 @@ class DERBI:
 
         self.to_inflect = {
             str(ind): {
-            'token': self.doc[ind],
-            'target_tags': '' if not len(tagset) else self.TagsProcessor.sub_tags(self.doc[ind], tagset)
+                'token': self.doc[ind],
+                'target_tags': '' if not len(tagset) else self.TagsProcessor.sub_tags(self.doc[ind], tagset)
             } for ind, tagset in zip(indices, target_tags)}
         # obtain the results for each token
         for data in self.to_inflect.values():
