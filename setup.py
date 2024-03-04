@@ -7,9 +7,11 @@ desc = '''
 
 setuptools.setup(
     name='DERBI',
-    version=1.0,
+    version="1.1",
     author='Max Schmaltz',
     authors_email='schmaltzmax@gmail.com',
     description=desc,
-    packages=['DERBI']
+    packages=['DERBI'],
+    package_data={'DERBI': ['Router.json', 'meta/*', 'meta/automata/*', 'meta/lexicons/*']},
+    include_package_data=True,
 )

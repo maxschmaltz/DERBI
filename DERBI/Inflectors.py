@@ -14,6 +14,8 @@
 # ************************************************************************
 
 import os, sys
+import importlib.resources
+
 ROOT = os.path.dirname(__file__)
 depth = 0
 for _ in range(depth): ROOT = os.path.dirname(ROOT)
@@ -21,19 +23,18 @@ sys.path.append(ROOT)
 
 # import required modules
 import json
-import os
 import re
 # import spaCy
 import spacy
 
 # in DERBI we need a compound splitter; we use dtuggener/CharSplit.
 # to access it, we first need do some manipulations:
-    # clone to folder 'Charsplit'
+# clone to folder 'Charsplit'
 # from git import Repo
 # if not os.path.exists('./CharSplit'):
 #     Repo.clone_from('https://github.com/dtuggener/CharSplit', 'CharSplit')
-    # in folder 'Charsplit' create an empty file '__init__.py' 
-    # for python to recognize the folder as a package
+# in folder 'Charsplit' create an empty file '__init__.py'
+# for python to recognize the folder as a package
 # filepath = os.path.join('CharSplit', '__init__.py')
 # with open(filepath, 'w') as i:
 #     i.write('')
@@ -42,13 +43,13 @@ import spacy
 # filepath = os.path.join('CharSplit/charsplit', '__init__.py')
 # with open(filepath, 'w') as i:
 #     i.write('')
-    # finally import
-from CharSplit.charsplit.splitter import Splitter
+# finally import
+from charsplit.splitter import Splitter
 splitter = Splitter()
 
 # import required scripts
 # from DERBI import Tools
-import Tools
+from DERBI import Tools
 
 '''
 For each POS we have its own inflector (the list of correspondance can be found at
@@ -67,7 +68,7 @@ Each one is organized generally the same way though:
 # Basic Parent Class
 class BasicInflector:
 
-    def __init__(self, fa_path: str=None, lexc_path: str=None):
+    def __init__(self, fa_path: str = None, lexc_path: str = None):
         self.auto_rules, self.lexc_rules = None, None
         # obtain rules
         if fa_path is not None:
@@ -83,11 +84,12 @@ class BasicInflector:
             curr_rules = self.lexc_rules[lemma]
             for rule in curr_rules:
                 # we require partial match
-                rule_is_applicable = set([((rule['rule'].get(cat) is None) or (feat in rule['rule'][cat])) 
-                                      for cat, feat in tags_dict.items()]) == {True}
+                rule_is_applicable = set([((rule['rule'].get(cat) is None) or (feat in rule['rule'][cat]))
+                                          for cat, feat in tags_dict.items()]) == {True}
                 if rule_is_applicable:
-                    # we return output and the not matched features (for further inflection) as well  
-                    return rule['output'], {cat: feat for cat, feat in tags_dict.items() if rule['rule'].get(cat) is None}
+                    # we return output and the not matched features (for further inflection) as well
+                    return rule['output'], {cat: feat for cat, feat in tags_dict.items() if
+                                            rule['rule'].get(cat) is None}
             else:
                 return lemma, Tools.split_tags(target_tags)
 
@@ -97,8 +99,8 @@ class BasicInflector:
 
         for rule in self.auto_rules:
             # here we require full match though
-            rule_is_applicable = (set([tags_dict.get(cat, '') in rule['rule'][cat]  
-                                  for cat, feat in rule['rule'].items()]) == {True}) or (rule['rule'] == {})
+            rule_is_applicable = (set([tags_dict.get(cat, '') in rule['rule'][cat]
+                                       for cat, feat in rule['rule'].items()]) == {True}) or (rule['rule'] == {})
             if rule_is_applicable:
                 token = re.sub(rule['pattern'], rule['to_sub'], token)
             # print(rule, token)
@@ -106,9 +108,9 @@ class BasicInflector:
 
     def __call__(self, token: spacy.tokens.token.Token, target_tags: str) -> str:
         # the common way:
-            # 1. search in lexicon
+        # 1. search in lexicon
         output, remaining_tags = self.search_in_lexicon(token.lemma_.lower(), target_tags)
-        if not(len(remaining_tags)):
+        if not (len(remaining_tags)):
             return output
             # 2. apply regular model
         return self.automata(output, remaining_tags)
@@ -130,7 +132,7 @@ class Uninflected(BasicInflector):
 
 # ADJ, ADV
 class ADJInflector(BasicInflector):
-    
+
     # most of the one syllable ADJ and ADV
     # toss an umlaut in comparative and superlative,
     # e.g. groß -> größer
@@ -153,17 +155,18 @@ class ADJInflector(BasicInflector):
             if (token.pos_ == 'ADV') and (token.text.lower() + 'en' == token.lemma_):
                 token.lemma_ = token.text
             # somehow for ADV spacy add 'e'/'en'/... to lemma in some forms,
-            # e.g. 'rote'.lemma_ = 'rote' but 'roten'.lemma_ = 'rot' 
-            if (token.pos_ == 'ADJ') and (token.text.lower() == token.lemma_) and (len(Tools.split_tags(target_tags)) > 1):
+            # e.g. 'rote'.lemma_ = 'rote' but 'roten'.lemma_ = 'rot'
+            if (token.pos_ == 'ADJ') and (token.text.lower() == token.lemma_) and (
+                    len(Tools.split_tags(target_tags)) > 1):
                 token.lemma_ = re.sub('e[mnrs]{0,1}$', '', token.lemma_)
 
             output, remaining_tags = self.search_in_lexicon(token.lemma_.lower(), target_tags)
-            if not(len(remaining_tags)):
+            if not (len(remaining_tags)):
                 return output
         else:
             output = token
             remaining_tags = Tools.split_tags(target_tags)
-            
+
         auto_output = self.automata(output, remaining_tags)
         # toss an umlaut, if applicable
         return self.umlaut(auto_output)
@@ -174,30 +177,30 @@ class ADPInflector(BasicInflector):
 
     def automata(self, *args):
         pass
-    
+
     def __call__(self, token: spacy.tokens.token.Token, target_tags: str) -> str:
         output, remaining_tags = self.search_in_lexicon(token.lemma_.lower(), target_tags)
-        if not(len(remaining_tags)):
+        if not (len(remaining_tags)):
             return output
-        
+
         # if an adposition came through the lexc and returned with
-        # remaining tags, it means it's not there (as APD.lexc defines 
-        # all the features); then we're trying to inflect the adp to 
+        # remaining tags, it means it's not there (as APD.lexc defines
+        # all the features); then we're trying to inflect the adp to
         # a form it can't have
-        raise ValueError('Features "' + target_tags + 
-                            '" are not available for word "' + token.norm_ + '".')
+        raise ValueError('Features "' + target_tags +
+                         '" are not available for word "' + token.norm_ + '".')
 
 
 # AUX
 class AUXInflector(BasicInflector):
 
-    def __init__(self, fa_path: str=None, lexc_path: str=None):
+    def __init__(self, fa_path: str = None, lexc_path: str = None):
         super().__init__(fa_path, lexc_path)
         # ADJInflector for participles
-        self.adj_inflector = ADJInflector('./meta/automata/ADJ.fa')
+        self.adj_inflector = ADJInflector('meta/automata/ADJ.fa')
 
     # strong german verbs toss an umlaut
-    # when Mood=Sub, 
+    # when Mood=Sub,
     # e.g. war -> wäre
     def umlaut(self, token: str) -> str:
         if '&' not in token:
@@ -212,17 +215,17 @@ class AUXInflector(BasicInflector):
     def __call__(self, token: spacy.tokens.token.Token, target_tags: str):
         # restrict imperative forms formation for modal verbs
         if ((token.lemma_.lower() in ['dürfen', 'können', 'mögen', 'müssen', 'sollen', 'wollen'])
-                                                                and ('Mood=Imp' in target_tags)):
+                and ('Mood=Imp' in target_tags)):
             raise ValueError('No Imperative forms available for modal verbs.')
-            
+
         if token.lemma_ == 'habe':
             token.lemma_ = 'haben'
-            
+
         if 'Verbform=Part' in target_tags:
-            target_tags = re.sub('Verbform=Part', 'Tense=Past|Verbform=Part', target_tags)      
+            target_tags = re.sub('Verbform=Part', 'Tense=Past|Verbform=Part', target_tags)
 
         output, remaining_tags = self.search_in_lexicon(token.lemma_.lower(), target_tags)
-        if not(len(remaining_tags)):
+        if not (len(remaining_tags)):
             return output
 
         output = self.automata(output, remaining_tags)
@@ -233,7 +236,7 @@ class AUXInflector(BasicInflector):
         # as they inflect the same way
         if 'Verbform=Part' in target_tags:
             return self.adj_inflector(output, re.sub('Tense=Past\|', '', target_tags) + '|Degree=Pos')
-        
+
         return output
 
 
@@ -258,12 +261,12 @@ class DETInflector(BasicInflector):
         # restrict plural forms formations for 'ein'
         if (re.search('^ein(e[mnrs]{0,1}){0,1}', token.lemma_.lower()) is not None) and ('Number=Plur' in target_tags):
             raise ValueError('Article "ein" has only Singular forms.')
-        
+
         # detect possessive pronouns
         input = token.lemma_.lower() if 'Poss=Yes' not in target_tags else self.parse_poss_dets(token.text.lower())
 
         output, remaining_tags = self.search_in_lexicon(input, target_tags)
-        if not(len(remaining_tags)):
+        if not (len(remaining_tags)):
             return output
 
         return self.automata(output, remaining_tags)
@@ -272,12 +275,12 @@ class DETInflector(BasicInflector):
 # NOUN
 class NOUNInflector(BasicInflector):
 
-    def __init__(self, fa_path: str=None, lexc_path: str=None):
+    def __init__(self, fa_path: str = None, lexc_path: str = None):
         super().__init__(fa_path, lexc_path)
         # ADJInflector for nouns of adjective declination
-        self.adj_inflector = ADJInflector('./meta/automata/ADJ.fa')
+        self.adj_inflector = ADJInflector('meta/automata/ADJ.fa')
 
-    def __call__(self, token: spacy.tokens.token.Token, target_tags: str) -> str:        
+    def __call__(self, token: spacy.tokens.token.Token, target_tags: str) -> str:
         # adjective declination nouns
         if 'Declination=' in target_tags:
             if re.search('e[mnrs]{0,1}$', token.norm_) is None:
@@ -285,9 +288,9 @@ class NOUNInflector(BasicInflector):
             token.lemma_ = re.sub('e[mnrs]{0,1}$', '', token.lemma_.lower())
             return self.adj_inflector(token, target_tags + '|Degree=Pos')
 
-        # primary search in lexicon      
+        # primary search in lexicon
         output, remaining_tags = self.search_in_lexicon(token.lemma_.lower(), target_tags)
-        if not(len(remaining_tags)):
+        if not (len(remaining_tags)):
             return output
 
         # if fails, we'll try to split it and search once again
@@ -299,9 +302,9 @@ class NOUNInflector(BasicInflector):
         splitted = splitted[1:]
         # search once again, now the compound head
         output, remaining_tags = self.search_in_lexicon(splitted[1].lower(), target_tags)
-        if not(len(remaining_tags)):
+        if not (len(remaining_tags)):
             return output
-        
+
         # restore compound
         return splitted[0].lower() + self.automata(output, remaining_tags)
 
@@ -322,9 +325,9 @@ class PRONInflector(BasicInflector):
             token.lemma_ = 'ich'
 
         output, remaining_tags = self.search_in_lexicon(token.lemma_.lower(), target_tags)
-        if not(len(remaining_tags)):
+        if not (len(remaining_tags)):
             return output
-        
+
         return self.automata(output, remaining_tags)
 
 
@@ -342,10 +345,10 @@ class PROPNInflector(BasicInflector):
 # VERB
 class VERBInflector(AUXInflector):
 
-    def __init__(self, fa_path: str=None, lexc_path: str=None):
+    def __init__(self, fa_path: str = None, lexc_path: str = None):
         super().__init__(fa_path, lexc_path)
         # we need to distinct between separable and inseparable prefixes
-        with open('./meta/lexicons/verb_prefixes.json') as j:
+        with importlib.resources.files("DERBI").joinpath("meta/lexicons/verb_prefixes.json").open() as j:
             self.prefixes = json.load(j)
 
     # split a verb into prefixes and non-prefix-part
@@ -367,7 +370,7 @@ class VERBInflector(AUXInflector):
             stem = re.sub(di, dis[di], stem)
 
         syls = lambda x: len(re.findall('[aeiouyäöüEIUY]', x))
-        
+
         prefs = []
         # detect and separate prefixes
         prefixes_pattern = re.compile('^' + '|^'.join(self.prefixes['sep'] + self.prefixes['insep']))
@@ -380,10 +383,12 @@ class VERBInflector(AUXInflector):
 
         if not len(prefs):
             return ('', False, token)
-        
+
         # restore diphthongs
-        restore_dis = lambda x, matches: x if not len(matches) else restore_dis(re.sub(matches[-1], 
-                                    {v: k for k, v in dis.items()}[matches[-1]], x), matches[:-1])
+        restore_dis = lambda x, matches: x if not len(matches) else restore_dis(re.sub(matches[-1],
+                                                                                       {v: k for k, v in dis.items()}[
+                                                                                           matches[-1]], x),
+                                                                                matches[:-1])
         # we also need to know if the prefix complex is separable or inseparable
         insep = ((prefs[0] in self.prefixes['insep']) or (prefs[-1] in self.prefixes['insep']))
         prefs = restore_dis(''.join(prefs), re.findall('|'.join({v: k for k, v in dis.items()}.keys()), ''.join(prefs)))
@@ -405,20 +410,20 @@ class VERBInflector(AUXInflector):
     def __call__(self, token: spacy.tokens.token.Token, target_tags: str) -> str:
         # restrict imperative forms formation for modal verbs
         if ((token.lemma_.lower() in ['dürfen', 'können', 'mögen', 'müssen', 'sollen', 'wollen'])
-                                                                and ('Mood=Imp' in target_tags)):
+                and ('Mood=Imp' in target_tags)):
             raise ValueError('No Imperative forms available for modal verbs.')
-        
+
         if token.lemma_ == 'habe':
             token.lemma_ = 'haben'
-            
+
         if target_tags == 'Verbform=Inf':
             return token.lemma_
-        
+
         part = False
         if target_tags == 'Verbform=Part':
             part = True
             target_tags = 'Tense=Past|Verbform=Part'
-        
+
         # separate prefixes
         prefixes, insep, stem = self.sep_prefixes(token.lemma_.lower())
 
@@ -431,13 +436,13 @@ class VERBInflector(AUXInflector):
         # toss an umlaut if applicable
         output = self.umlaut(output)
         # restore prefixes:
-            # separable prefixes and inseparable in participles are joint at the beginning
-            # else the prefix is separated 
+        # separable prefixes and inseparable in participles are joint at the beginning
+        # else the prefix is separated
         output = self.add_prefixes(prefixes, insep, output, part)
 
         # use ADJInflector for participles,
         # as they inflect the same way
         if 'Verbform=Part' in target_tags:
             return self.adj_inflector(output, re.sub('Tense=Past\|', '', target_tags) + '|Degree=Pos')
-        
+
         return output
